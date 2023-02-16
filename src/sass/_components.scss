@@ -1,0 +1,31 @@
+.container {
+  max-width: 110rem;
+  margin: 0 auto;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &--pill {
+    border-radius: 5rem;
+    padding: 1.8rem 4rem;
+    border: 1px solid rgba(#ffff,.7);
+    text-transform: capitalize;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.link,
+.btn {
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}

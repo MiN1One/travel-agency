@@ -1,0 +1,22 @@
+.heading {
+  font-size: 2rem;
+  font-family: var(--font-secondary);
+
+  &--xlg {
+    font-size: 10rem;
+    text-transform: uppercase;
+  }
+}
+
+.text {
+  font-size: 1.4rem;
+  color: var(--color-font-primary);
+
+  &--sub {
+    color: var(--color-font-pale);
+  }
+
+  &--sm {
+    font-size: 1.15rem;
+  }
+}

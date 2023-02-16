@@ -1,6 +1,14 @@
-import 'components/styles/globals.css'
 import type { AppProps } from 'next/app'
+import '@/sass/index.scss';
+import { GlobalContextProvider } from '@/contexts/GlobalContext';
+import { appWithTranslation } from 'next-i18next';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <GlobalContextProvider initialData={pageProps.headData}>
+      <Component {...pageProps} />
+    </GlobalContextProvider>
+  )
 }
+
+export default appWithTranslation(App);
