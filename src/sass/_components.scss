@@ -13,6 +13,13 @@
     padding: 1.8rem 4rem;
     border: 1px solid rgba(#ffff,.7);
     text-transform: capitalize;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: #fff;
+      color: var(--color-green);
+    }
   }
 }
 

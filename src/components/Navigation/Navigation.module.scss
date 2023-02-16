@@ -1,4 +1,6 @@
 .navigation {
+  position: relative;
+  z-index: 9999;
   
   .content {
     height: var(--header-height);
