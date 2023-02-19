@@ -6,17 +6,30 @@
     font-size: 10rem;
     text-transform: uppercase;
   }
+
+  &--1 {
+    font-size: 4.75rem;
+  }
 }
 
 .text {
   font-size: 1.4rem;
   color: var(--color-font-primary);
+  font-family: var(--font-tertiary);
 
   &--sub {
     color: var(--color-font-pale);
   }
 
+  &--light {
+    font-weight: 300;
+  }
+
   &--sm {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
+  }
+
+  &--dark {
+    color: var(--color-font-dark);
   }
 }

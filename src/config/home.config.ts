@@ -1,6 +1,7 @@
 import { IHomeData } from "@interfaces/home.interface";
 import samarkandImage from '@assets/images/samarkand.png';
 import bukharaImage from '@assets/images/bukhara.png';
+import charvakImage from '@assets/images/charvak.png';
 
 export const homeData: IHomeData = {
   places: [
@@ -34,6 +35,36 @@ export const homeData: IHomeData = {
     },
   ],
   mainTitle: 'Uzbekistan',
+  tours: [
+    {
+      title: 'Charvak Sea',
+      link: '/tours/1',
+      id: 1,
+      image: charvakImage.src,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+    },
+    {
+      title: 'Charvak Sea',
+      link: '/tours/2',
+      id: 2,
+      image: charvakImage.src,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+    },
+    {
+      title: 'Charvak Sea',
+      link: '/tours/3',
+      id: 3,
+      image: charvakImage.src,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+    },
+    {
+      title: 'Charvak Sea',
+      link: '/tours/4',
+      id: 4,
+      image: charvakImage.src,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+    },
+  ],
   socialLinks: {
     instagram: '',
     telegram: '',

@@ -1,3 +1,5 @@
+import { IItem } from "./common.interface";
+
 export interface IPlace {
   image: string;
   title: string;
@@ -16,4 +18,5 @@ export interface IHomeData {
   places: IPlace[];
   mainTitle: string;
   socialLinks: ISocialLinks;
+  tours: IItem[];
 }

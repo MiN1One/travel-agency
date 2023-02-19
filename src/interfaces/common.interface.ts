@@ -9,6 +9,15 @@ export interface IFooterData {
   
 }
 
+
+export interface IItem {
+  title: string;
+  link: string;
+  image: string;
+  description?: string;
+  id: number;
+}
+
 export interface IHeaderData {
   links: ILinkItem[];
   phoneNumber: string;

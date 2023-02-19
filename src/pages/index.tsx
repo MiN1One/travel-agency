@@ -5,6 +5,7 @@ import { DEFAULT_LOCALE } from "@/interfaces/locales.interface";
 import { fetchMainData } from "@/utils/fetch.utils";
 import { GetStaticProps } from "next";
 import { homeData } from '@/config/home.config';
+import ToursSection from "@/components/ToursSection/ToursSection";
 
 interface HomePageProps {
   homeData: IHomeData;
@@ -15,6 +16,7 @@ export default function HomePage(props: HomePageProps) {
     <Layout>
       <main>
         <Hero homeData={props.homeData} />
+        <ToursSection tours={props.homeData.tours} />
       </main>
     </Layout>
   )

@@ -1,0 +1,77 @@
+.card {
+  overflow: hidden;
+  position: relative;
+  border-radius: 1.5rem;
+  height: 40rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem 2rem;
+
+  &::after,
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(9,9,121,0) 40%);
+    z-index: 2;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: opacity .425s ease;
+    opacity: 0;
+    z-index: 4;
+  }
+
+  &::after { content: ""; }
+
+  .image {
+    z-index: 1;
+
+    img { object-fit: cover; }
+  }
+
+  .title {
+    position: absolute;
+    bottom: 0;
+    padding: 2rem;
+    z-index: 3;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.4rem;
+    left: 0;
+    transition: bottom .425s ease;
+  }
+
+  .link {
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+
+  .description {
+    height: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:hover {
+    .description {
+      height: 6rem;
+    }
+
+    .content { opacity: 1; }
+
+    .title {
+      bottom: 9.25rem;
+    }
+  }
+}

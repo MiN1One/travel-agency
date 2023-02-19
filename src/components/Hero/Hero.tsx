@@ -6,6 +6,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import CustomIcon from "../Common/CustomIcon";
 import IconPlay from "../Common/IconPlay";
+import { Instagram, Youtube } from "iconsax-react";
 
 interface HeroProps {
   homeData: IHomeData;
@@ -114,6 +115,33 @@ function Hero({ homeData }: HeroProps) {
       )}
       <div className={classes.list}>
         {placeEls}
+      </div>
+      <div className={classes.socialLinks}>
+        <div className="container">
+          <div className={classes.linksContent}>
+            <a 
+              className="link--rounded" 
+              href={homeData.socialLinks.instagram} 
+              title="Instagram"
+            >
+              <Instagram />
+            </a>
+            <a 
+              className="link--rounded" 
+              href={homeData.socialLinks.telegram} 
+              title="Telegram"
+            >
+              <CustomIcon iconName="telegram" />
+            </a>
+            <a 
+              className="link--rounded" 
+              href={homeData.socialLinks.youtTube} 
+              title="Youtube"
+            >
+              <Youtube />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
