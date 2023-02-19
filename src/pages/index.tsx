@@ -16,7 +16,10 @@ export default function HomePage(props: HomePageProps) {
     <Layout>
       <main>
         <Hero homeData={props.homeData} />
-        <ToursSection tours={props.homeData.tours} />
+        <ToursSection 
+          tours={props.homeData.tours} 
+          tourTypes={props.homeData.tourTypes}
+        />
       </main>
     </Layout>
   )

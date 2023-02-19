@@ -1,10 +1,25 @@
 .tours {
  
+  .list {
+    width: 70%;
+    margin: 0;
+  }
+
+  .tagItem {
+    flex-shrink: 0;
+  }
+
   .content {
     display: flex;
     flex-direction: column;
     row-gap: 7.5rem;
     width: 100%;
+  }
+
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .slider {

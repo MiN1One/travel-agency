@@ -7,6 +7,7 @@ interface SectionSkeletonProps extends ElementProps {
   contentClassName?: string;
   children: React.ReactNode;
   headContent?: React.ReactNode;
+  headClassName?: string;
 }
 
 function SectionSkeleton(props: SectionSkeletonProps) {
@@ -16,12 +17,13 @@ function SectionSkeleton(props: SectionSkeletonProps) {
     contentClassName,
     children,
     headContent,
+    headClassName,
   } = props;
   return (
     <section className={classNames(classes.section, className)}>
       <div className="container">
         {(title || headContent) && (
-          <div className={classes.head}>
+          <div className={classNames(classes.head, headClassName)}>
             {title && (
               <h1 className={classNames(
                 classes.heading, 

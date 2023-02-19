@@ -35,7 +35,40 @@ export const homeData: IHomeData = {
     },
   ],
   mainTitle: 'Uzbekistan',
+  tourTypes: [
+    {
+      id: 1,
+      title: 'Adventure'
+    },
+    {
+      id: 2,
+      title: 'Agricultural'
+    },
+    {
+      id: 3,
+      title: 'Business'
+    },
+    {
+      id: 4,
+      title: 'Cultural'
+    },
+    {
+      id: 5,
+      title: 'Religious'
+    },
+    {
+      id: 6,
+      title: 'Silk Road'
+    },
+  ],
   tours: [
+    {
+      title: 'Charvak Sea',
+      link: '/tours/1',
+      id: 1,
+      image: charvakImage.src,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+    },
     {
       title: 'Charvak Sea',
       link: '/tours/1',

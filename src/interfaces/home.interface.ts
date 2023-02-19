@@ -1,4 +1,5 @@
 import { IItem } from "./common.interface";
+import { ITourType } from "./tour.interface";
 
 export interface IPlace {
   image: string;
@@ -19,4 +20,5 @@ export interface IHomeData {
   mainTitle: string;
   socialLinks: ISocialLinks;
   tours: IItem[];
+  tourTypes: ITourType[];
 }
