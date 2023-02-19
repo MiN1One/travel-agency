@@ -16,6 +16,10 @@
   font-size: 1.4rem;
   color: var(--color-font-primary);
   font-family: var(--font-tertiary);
+  
+  &--high {
+    line-height: 2.4rem;
+  }
 
   &--sub {
     color: var(--color-font-pale);
@@ -25,8 +29,17 @@
     font-weight: 300;
   }
 
+  &--xl {
+    font-size: 1.9rem;
+    line-height: 3rem;
+  }
+
   &--sm {
     font-size: 1.3rem;
+  }
+
+  &--upc {
+    text-transform: uppercase;
   }
 
   &--dark {

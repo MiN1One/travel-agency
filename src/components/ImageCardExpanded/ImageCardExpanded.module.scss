@@ -1,0 +1,83 @@
+.card {
+  --card-width: 30rem;
+  --card-height: 40rem;
+  display: flex;
+  height: var(--card-height);
+  width: 100%;
+  position: relative;
+
+  .image {
+    width: var(--card-width);
+    height: 100%;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+
+    img { object-fit: cover; }
+
+    &::after {
+      border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+    }
+
+    &,
+    &::after {
+      transition: all .4s ease;
+    }
+  }
+
+  .content {
+    overflow: hidden;
+    width: 0;
+    transition: width .4s ease;
+    flex-shrink: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    background: var(--color-blue);
+    border-radius: var(--card-border-radius) 0 0 var(--card-border-radius);
+    transform: translateX(1px);
+  }
+
+  .label {
+    margin: 2rem 0 0 2rem;
+    padding: .5rem .75rem;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    color: var(--color-font-dark);
+    background: #fff;
+    width: max-content;
+  }
+  
+  .description {
+    padding: 2rem;
+    padding-top: 0;
+    width: var(--card-width);
+    overflow: hidden;
+  }
+
+  .link {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 10;
+  }
+
+  &:hover {
+    .content { width: 50%; }
+
+    .link {
+      color: var(--color-font-dark);
+
+      &:hover { color: var(--color-green); }
+    }
+
+    .image,
+    .image::after {
+      border-radius: 0 var(--card-border-radius) var(--card-border-radius) 0;
+    }
+
+    .image::after { opacity: 0; }
+  }
+}

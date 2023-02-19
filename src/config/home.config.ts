@@ -2,6 +2,7 @@ import { IHomeData } from "@interfaces/home.interface";
 import samarkandImage from '@assets/images/samarkand.png';
 import bukharaImage from '@assets/images/bukhara.png';
 import charvakImage from '@assets/images/charvak.png';
+import bannerImage from '@assets/images/banner.png';
 
 export const homeData: IHomeData = {
   places: [
@@ -61,41 +62,51 @@ export const homeData: IHomeData = {
       title: 'Silk Road'
     },
   ],
+  banner: {
+    image: bannerImage.src,
+    title: 'Uzbekistan',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.',
+  },
   tours: [
     {
       title: 'Charvak Sea',
       link: '/tours/1',
       id: 1,
       image: charvakImage.src,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.',
+      type: 'Cultural'
     },
     {
       title: 'Charvak Sea',
       link: '/tours/1',
       id: 1,
       image: charvakImage.src,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.',
+      type: 'Cultural'
     },
     {
       title: 'Charvak Sea',
       link: '/tours/2',
       id: 2,
       image: charvakImage.src,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.',
+      type: 'Cultural'
     },
     {
       title: 'Charvak Sea',
       link: '/tours/3',
       id: 3,
       image: charvakImage.src,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.',
+      type: 'Cultural'
     },
     {
       title: 'Charvak Sea',
       link: '/tours/4',
       id: 4,
       image: charvakImage.src,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.',
+      type: 'Cultural'
     },
   ],
   socialLinks: {

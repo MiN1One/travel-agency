@@ -1,0 +1,20 @@
+.places {
+
+  .list {
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 3rem;
+    overflow-y: auto;   
+    border-radius: var(--card-border-radius); 
+  }
+
+  .item {
+    width: 25%;
+    flex-shrink: 0;
+    transition: width .4s ease;
+
+    &:hover {
+      width: 50%;
+    }
+  }
+}

@@ -9,11 +9,11 @@ export interface IFooterData {
   
 }
 
-
 export interface IItem {
   title: string;
   link: string;
   image: string;
+  type: string;
   description?: string;
   id: number;
 }

@@ -14,7 +14,10 @@ function ImageCard({ item }: ImageCardProps) {
   const { t } = useTranslation();
 
   return (
-    <div role="cell" className={classes.card}>
+    <div 
+      role="cell" 
+      className={classNames('overlay', classes.card)}
+    >
       <figure className={classes.image}>
         <img 
           alt={item.title} 

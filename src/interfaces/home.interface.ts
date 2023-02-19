@@ -15,10 +15,17 @@ export interface ISocialLinks {
   youtTube: string;
 }
 
+export interface IBanner {
+  image: string;
+  title: string;
+  description?: string;
+}
+
 export interface IHomeData {
   places: IPlace[];
   mainTitle: string;
   socialLinks: ISocialLinks;
   tours: IItem[];
+  banner: IBanner;
   tourTypes: ITourType[];
 }

@@ -6,6 +6,8 @@ import { fetchMainData } from "@/utils/fetch.utils";
 import { GetStaticProps } from "next";
 import { homeData } from '@/config/home.config';
 import ToursSection from "@/components/ToursSection/ToursSection";
+import ImageBanner from "@/components/ImageBanner/ImageBanner";
+import PlacesOfInterest from "@/components/PlacesOfInterest/PlacesOfInterest";
 
 interface HomePageProps {
   homeData: IHomeData;
@@ -20,6 +22,8 @@ export default function HomePage(props: HomePageProps) {
           tours={props.homeData.tours} 
           tourTypes={props.homeData.tourTypes}
         />
+        <ImageBanner banner={props.homeData.banner} />
+        <PlacesOfInterest places={props.homeData.tours} />
       </main>
     </Layout>
   )
