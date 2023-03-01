@@ -28,6 +28,10 @@
     &:active {
       background: #fff;
       color: var(--color-green);
+
+      svg {
+        color: var(--color-green);
+      }
     }
   }
 
@@ -79,6 +83,22 @@
 
   &--lg#{&}--pill {
     border-radius: 10rem;
+  }
+
+  &--round {
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.5);
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 2rem;
+      color: var(--color-font-dark);
+      height: 2rem;
+    }
   }
 }
 

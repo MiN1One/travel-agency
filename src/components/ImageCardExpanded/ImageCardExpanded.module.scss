@@ -73,6 +73,8 @@
       &:hover { color: var(--color-green); }
     }
 
+    svg { color: var(--color-font-dark); }
+
     .image,
     .image::after {
       border-radius: 0 var(--card-border-radius) var(--card-border-radius) 0;

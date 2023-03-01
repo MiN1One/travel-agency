@@ -15,7 +15,7 @@ function PlacesOfInterest({ places }: PlacesOfInterestProps) {
 
   const placeEls = places.map((item, index) => {
     return (
-      <div className={classes.item} key={item.id || index}>
+      <div className={classes.item} key={index}>
         <ImageCardExpanded item={item} />
       </div>
     );

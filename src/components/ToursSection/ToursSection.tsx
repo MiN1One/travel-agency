@@ -20,9 +20,9 @@ function ToursSection({ tours, tourTypes }: ToursSectionProps) {
     string | null
   >(null);
 
-  const tourEls = tours.map(tour => {
+  const tourEls = tours.map((tour, index) => {
     return (
-      <SwiperSlide key={tour.id}>
+      <SwiperSlide key={index}>
         <ImageCard item={tour} />
       </SwiperSlide>
     );
@@ -31,7 +31,7 @@ function ToursSection({ tours, tourTypes }: ToursSectionProps) {
   const tourTypeEls = tourTypes?.map((type, index) => {
     return (
       <SwiperSlide
-        key={type.id || index}
+        key={index}
         aria-label={type.title}
         tabIndex={0}
         className={classNames(

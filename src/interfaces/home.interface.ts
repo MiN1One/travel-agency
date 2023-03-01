@@ -28,4 +28,5 @@ export interface IHomeData {
   tours: IItem[];
   banner: IBanner;
   tourTypes: ITourType[];
+  images: string[];
 }

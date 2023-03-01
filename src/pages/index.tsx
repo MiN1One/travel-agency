@@ -8,6 +8,7 @@ import { homeData } from '@/config/home.config';
 import ToursSection from "@/components/ToursSection/ToursSection";
 import ImageBanner from "@/components/ImageBanner/ImageBanner";
 import PlacesOfInterest from "@/components/PlacesOfInterest/PlacesOfInterest";
+import PhotoGallery from "@/components/PhotoGallery/PhotoGallery";
 
 interface HomePageProps {
   homeData: IHomeData;
@@ -24,6 +25,7 @@ export default function HomePage(props: HomePageProps) {
         />
         <ImageBanner banner={props.homeData.banner} />
         <PlacesOfInterest places={props.homeData.tours} />
+        <PhotoGallery images={props.homeData.images} />
       </main>
     </Layout>
   )

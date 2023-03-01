@@ -32,7 +32,7 @@ function Hero({ homeData }: HeroProps) {
       allPlacesCount = '0' + allPlacesCount;
     }
     return (
-      <React.Fragment key={place.id || index}>
+      <React.Fragment key={index}>
         <div 
           className={classNames(
             classes.item,
@@ -79,7 +79,7 @@ function Hero({ homeData }: HeroProps) {
     }
     return (
       <figure
-        key={place.id || index}
+        key={index}
         className={classNames(
           classes.bgImage,
           { [classes.active]: place.id === activePlaceId }

@@ -14,7 +14,7 @@ function Navigation() {
   const navigationItemEls = links.map((item, index) => {
     return (
       <li 
-        key={item.id || index}
+        key={index}
         className={classes.item}
         aria-label={item.title}
       >

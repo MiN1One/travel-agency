@@ -1,5 +1,6 @@
 import { ElementProps } from "@/interfaces/utils.interface";
 import classNames from "classnames";
+import React from "react";
 import classes from './SectionSkeleton.module.scss';
 
 interface SectionSkeletonProps extends ElementProps {
@@ -8,6 +9,7 @@ interface SectionSkeletonProps extends ElementProps {
   children: React.ReactNode;
   headContent?: React.ReactNode;
   headClassName?: string;
+  withContainer?: boolean;
 }
 
 function SectionSkeleton(props: SectionSkeletonProps) {
@@ -17,8 +19,25 @@ function SectionSkeleton(props: SectionSkeletonProps) {
     contentClassName,
     children,
     headContent,
+    withContainer = true,
     headClassName,
   } = props;
+
+  let content = (
+    <React.Fragment>
+      <div className={classNames(classes.content, contentClassName)}>
+        {children}
+      </div>
+    </React.Fragment>
+  );
+  if (withContainer) {
+    content = (
+      <div className="container">
+        {content}
+      </div>
+    );
+  }
+
   return (
     <section className={classNames(classes.section, className)}>
       <div className="container">
@@ -35,10 +54,8 @@ function SectionSkeleton(props: SectionSkeletonProps) {
             {headContent}
           </div>
         )}
-        <div className={classNames(classes.content, contentClassName)}>
-          {children}
-        </div>
       </div>
+      {content}
     </section>
   );
 }

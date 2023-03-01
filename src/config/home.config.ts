@@ -3,6 +3,12 @@ import samarkandImage from '@assets/images/samarkand.png';
 import bukharaImage from '@assets/images/bukhara.png';
 import charvakImage from '@assets/images/charvak.png';
 import bannerImage from '@assets/images/banner.png';
+import image1 from '@assets/images/1.png';
+import image2 from '@assets/images/2.png';
+import image3 from '@assets/images/3.png';
+import image4 from '@assets/images/4.png';
+import image5 from '@assets/images/5.png';
+import image6 from '@assets/images/6.png';
 
 export const homeData: IHomeData = {
   places: [
@@ -108,6 +114,15 @@ export const homeData: IHomeData = {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit quam sed placerat dapibus. Aliquam bibendum elit elit, vel maximus.',
       type: 'Cultural'
     },
+  ],
+  images: [
+    image1.src,
+    image2.src,
+    image3.src,
+    image4.src,
+    image4.src,
+    image5.src,
+    image6.src,
   ],
   socialLinks: {
     instagram: '',
