@@ -21,6 +21,11 @@ export interface IBanner {
   description?: string;
 }
 
+export interface IFaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface IHomeData {
   places: IPlace[];
   mainTitle: string;
@@ -28,5 +33,7 @@ export interface IHomeData {
   tours: IItem[];
   banner: IBanner;
   tourTypes: ITourType[];
+  countries: string[];
+  faq: IFaqItem[];
   images: string[];
 }

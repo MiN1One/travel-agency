@@ -106,6 +106,13 @@
   display: flex;
   align-items: center;
   column-gap: 1rem;
+  font-size: 1.4rem;
+  color: var(--color-grey);
+  font-family: var(--font-tertiary);
+
+  &:hover {
+    color: var(--color-font-pale);
+  }
 
   &--rounded {
     border-radius: 50%;
@@ -120,5 +127,9 @@
       width: 2rem;
       height: 2rem;
     }
+  }
+
+  &--rounded#{&}--dark {
+    background: rgba(255,255,255,.1);
   }
 }

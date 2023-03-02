@@ -38,6 +38,10 @@
     font-size: 1.3rem;
   }
 
+  &--pale-dark {
+    color: var(--color-grey);
+  }
+
   &--upc {
     text-transform: uppercase;
   }

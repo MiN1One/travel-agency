@@ -11,6 +11,20 @@ import image5 from '@assets/images/5.png';
 import image6 from '@assets/images/6.png';
 
 export const homeData: IHomeData = {
+  faq: [
+    {
+      question: 'What is your national cuisine',
+      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+    },
+    {
+      question: 'What is your national cuisine',
+      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+    },
+    {
+      question: 'What is your national cuisine',
+      answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+    },
+  ],
   places: [
     {
       title: 'Bukhara',
@@ -67,6 +81,18 @@ export const homeData: IHomeData = {
       id: 6,
       title: 'Silk Road'
     },
+  ],
+  countries: [
+    '/flags/ae.png',
+    '/flags/af.png',
+    '/flags/ag.png',
+    '/flags/ae.png',
+    '/flags/al.png',
+    '/flags/as.png',
+    '/flags/ga.png',
+    '/flags/yt.png',
+    '/flags/va.png',
+    '/flags/aw.png',
   ],
   banner: {
     image: bannerImage.src,

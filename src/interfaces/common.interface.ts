@@ -6,7 +6,19 @@ export interface ILinkItem {
 }
 
 export interface IFooterData {
-  
+  companyInfo: {
+    phoneNumber: string;
+    address: string;
+    email: string;
+  };
+  links: ILinkItem[];
+  socialLinks: {
+    facebook: string;
+    instagram: string;
+    youtube: string;
+    whatsapp: string;
+    telegram: string;
+  };
 }
 
 export interface IItem {

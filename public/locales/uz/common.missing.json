@@ -6,5 +6,11 @@
   "placeOfInterest": "placeOfInterest",
   "Gallery Image": "Gallery Image",
   "photoGallery": "photoGallery",
-  "galleryImage": "galleryImage"
+  "galleryImage": "galleryImage",
+  "countryImage": "countryImage",
+  "countries": "countries",
+  "phoneNumber": "phoneNumber",
+  "email": "email",
+  "telShort": "telShort",
+  "address": "address"
 }

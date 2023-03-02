@@ -1,0 +1,61 @@
+.footer {
+  padding: 5rem 0 7rem 0;
+  background: var(--color-dark);
+
+  .logo {
+    width: 17.5rem;
+    height: auto;
+  }
+
+  .text {
+    max-width: 40rem;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+  }
+
+  .linkItem {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-tertiary);
+    column-gap: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+
+    span:first-child {
+      flex-shrink: 0;
+    }
+  }
+
+  .labelGroup {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+      color: var(--color-grey);
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  }
+
+  .listHorizontal {
+    display: flex;
+    gap: 4rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4rem;
+  }
+}

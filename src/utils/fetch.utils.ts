@@ -1,5 +1,6 @@
-import { headerData, navigationItems } from '@/config/navigation.config';
+import { headerData } from '@/config/navigation.config';
 import { IHeadData } from '@/interfaces/common.interface';
+import { footerData } from '@/config/footer.config';
 import { DEFAULT_LOCALE } from '@/interfaces/locales.interface';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -36,7 +37,7 @@ export const fetchMainData = async (
   );
   const headData: IHeadData = {
     headerData,
-    footerData: {}
+    footerData,
   };
   return {
     ...translations,
