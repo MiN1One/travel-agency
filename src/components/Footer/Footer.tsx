@@ -1,5 +1,5 @@
 import { useGlobalContext } from "@/contexts/GlobalContext";
-import { memo } from "react";
+import { FormEvent, memo, useCallback, useState } from "react";
 import { useTranslation } from "next-i18next";
 import Logo from "../Common/Logo";
 import classes from './Footer.module.scss';
@@ -10,6 +10,18 @@ function Footer() {
   const { headData } = useGlobalContext();
   const { footerData } = headData || {};
   const { t } = useTranslation();
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const onSubmitForm = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+    }, []
+  );
 
   if (!footerData) return null;
 
@@ -18,7 +30,7 @@ function Footer() {
       <a 
         key={link.id ?? index} 
         href={link.link}
-        className="link"
+        className="link text--pale-dark"
         title={link.title}
       >
         {link.title}
@@ -85,9 +97,12 @@ function Footer() {
               {linkEls}
             </div>
           </div>
-          <div className={classes.group}>
-
-          </div>
+          <form onSubmit={onSubmitForm} className={classes.form}>
+            <input className="input"  />
+            <button className="btn btn--green btn--fullWidth btn--reverse">
+              {t('submit')}
+            </button>
+          </form>
           <div className={classes.group}>
 
           </div>
