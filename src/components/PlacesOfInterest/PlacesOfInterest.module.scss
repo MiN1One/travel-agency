@@ -9,7 +9,7 @@
   }
 
   .item {
-    width: 25%;
+    width: var(--expanded-card-width);
     flex-shrink: 0;
     transition: width .4s ease;
 

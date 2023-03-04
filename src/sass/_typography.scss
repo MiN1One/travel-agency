@@ -10,13 +10,19 @@
   &--1 {
     font-size: 4.75rem;
   }
+
+  &--6 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-family: var(--font-tertiary);
+  }
 }
 
 .text {
   font-size: 1.4rem;
   color: var(--color-font-primary);
   font-family: var(--font-tertiary);
-  
+
   &--high {
     line-height: 2.4rem;
   }

@@ -1,13 +1,11 @@
 .card {
-  --card-width: 30rem;
-  --card-height: 40rem;
   display: flex;
-  height: var(--card-height);
+  height: var(--expanded-card-height);
   width: 100%;
   position: relative;
 
   .image {
-    width: var(--card-width);
+    width: var(--expanded-card-width);
     height: 100%;
     border-radius: var(--card-border-radius);
     overflow: hidden;
@@ -53,7 +51,7 @@
   .description {
     padding: 2rem;
     padding-top: 0;
-    width: var(--card-width);
+    width: var(--expanded-card-width);
     overflow: hidden;
   }
 

@@ -1,12 +1,13 @@
 import { IHomeData } from "@/interfaces/home.interface";
 import React, { memo, useMemo, useState } from "react";
 import { useTranslation } from "next-i18next";
-import classes from './Hero.module.scss';
+import classes from "./Hero.module.scss";
 import classNames from "classnames";
 import Link from "next/link";
 import CustomIcon from "../Common/CustomIcon";
 import IconPlay from "../Common/IconPlay";
 import { Instagram, Youtube } from "iconsax-react";
+import { TbBrandTelegram } from "react-icons/tb";
 
 interface HeroProps {
   homeData: IHomeData;
@@ -16,7 +17,7 @@ function Hero({ homeData }: HeroProps) {
   const { t } = useTranslation();
   const [activePlaceId, setActivePlaceId] = useState<number | null>(
     homeData.places[0].id
-  ); 
+  );
 
   const activePlaceObj = useMemo(() => {
     return homeData.places.find(({ id }) => id === activePlaceId);
@@ -24,24 +25,22 @@ function Hero({ homeData }: HeroProps) {
 
   const placeEls = homeData.places.map((place, index) => {
     const isActive = activePlaceId === place.id;
-    let activeNumber: any = index + 1, allPlacesCount: any = homeData.places.length;
+    let activeNumber: any = index + 1,
+      allPlacesCount: any = homeData.places.length;
     if (activeNumber < 10) {
-      activeNumber = '0' + activeNumber;
+      activeNumber = "0" + activeNumber;
     }
     if (allPlacesCount < 10) {
-      allPlacesCount = '0' + allPlacesCount;
+      allPlacesCount = "0" + allPlacesCount;
     }
     return (
       <React.Fragment key={index}>
-        <div 
-          className={classNames(
-            classes.item,
-            { [classes.active]: isActive }
-          )}
+        <div
+          className={classNames(classes.item, { [classes.active]: isActive })}
           tabIndex={0}
           role="columnheader"
         >
-          <span 
+          <span
             className={classes.title}
             onClick={() => place.image && setActivePlaceId(place.id!)}
           >
@@ -51,16 +50,14 @@ function Hero({ homeData }: HeroProps) {
             <div className={classes.itemGroup}>
               <div className="text">
                 {activeNumber}/
-                <span className="text--sm">
-                  {allPlacesCount}
-                </span>
+                <span className="text--sm">{allPlacesCount}</span>
               </div>
-              <Link 
-                className="link link--arrow" 
-                href="/places/all" 
-                title={t('viewMore')!}
+              <Link
+                className="link link--arrow"
+                href="/places/all"
+                title={t("viewMore")!}
               >
-                {t('viewMore')}
+                {t("viewMore")}
                 <CustomIcon iconName="arrow-right" />
               </Link>
             </div>
@@ -80,14 +77,13 @@ function Hero({ homeData }: HeroProps) {
     return (
       <figure
         key={index}
-        className={classNames(
-          classes.bgImage,
-          { [classes.active]: place.id === activePlaceId }
-        )}
+        className={classNames(classes.bgImage, {
+          [classes.active]: place.id === activePlaceId,
+        })}
       >
         <img
           src={place.image}
-          alt={place.title || t('placeImage')!}
+          alt={place.title || t("placeImage")!}
           width="100%"
           height="100%"
         />
@@ -98,44 +94,40 @@ function Hero({ homeData }: HeroProps) {
   return (
     <section className={classes.hero}>
       {bgImages}
-      <h1 className="heading heading--xlg">
-        {homeData.mainTitle}
-      </h1>
+      <h1 className="heading heading--xlg">{homeData.mainTitle}</h1>
       {activePlaceObj?.previewLink && (
-        <Link 
-          className={classes.btnPlay} 
-          title={activePlaceObj.title} 
+        <Link
+          className={classes.btnPlay}
+          title={activePlaceObj.title}
           href={activePlaceObj.previewLink}
         >
-          {t('watchShowrell')}
+          {t("watchShowrell")}
           <span>
             <IconPlay />
           </span>
         </Link>
       )}
-      <div className={classes.list}>
-        {placeEls}
-      </div>
+      <div className={classes.list}>{placeEls}</div>
       <div className={classes.socialLinks}>
         <div className="container">
           <div className={classes.linksContent}>
-            <a 
-              className="link--rounded" 
-              href={homeData.socialLinks.instagram} 
+            <a
+              className="link--rounded"
+              href={homeData.socialLinks.instagram}
               title="Instagram"
             >
               <Instagram />
             </a>
-            <a 
-              className="link--rounded" 
-              href={homeData.socialLinks.telegram} 
+            <a
+              className="link--rounded"
+              href={homeData.socialLinks.telegram}
               title="Telegram"
             >
-              <CustomIcon iconName="telegram" />
+              <TbBrandTelegram />
             </a>
-            <a 
-              className="link--rounded" 
-              href={homeData.socialLinks.youtTube} 
+            <a
+              className="link--rounded"
+              href={homeData.socialLinks.youtTube}
               title="Youtube"
             >
               <Youtube />

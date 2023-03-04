@@ -12,5 +12,15 @@
   "phoneNumber": "phoneNumber",
   "email": "email",
   "telShort": "telShort",
-  "address": "address"
+  "address": "address",
+  "submit": "submit",
+  "name": "name",
+  "message": "message",
+  "contactUs": "contactUs",
+  "respond": "respond",
+  "instagram": "instagram",
+  "telegram": "telegram",
+  "whatsapp": "whatsapp",
+  "youtube": "youtube",
+  "facebook": "facebook"
 }

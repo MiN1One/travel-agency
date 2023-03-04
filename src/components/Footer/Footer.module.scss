@@ -14,7 +14,10 @@
   .group {
     display: flex;
     flex-direction: column;
-    row-gap: 4rem;
+
+    &:not(:last-child) {
+      justify-content: space-between;
+    }
   }
 
   .linkItem {
@@ -24,6 +27,7 @@
     column-gap: 1.2rem;
     font-size: 1.6rem;
     font-weight: 500;
+    width: max-content;
 
     span:first-child {
       flex-shrink: 0;
@@ -43,7 +47,8 @@
 
   .listHorizontal {
     display: flex;
-    gap: 4rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .list {
@@ -55,7 +60,29 @@
 
   .content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10rem;
+  }
+
+  .formWrapper {
+    min-height: 39rem;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .socialLinks {
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+  }
+
+  .titleGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
   }
 }
