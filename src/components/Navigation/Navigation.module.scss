@@ -45,4 +45,11 @@
       font-size: 2.5rem;
     }
   }
+
+  &.notHome {
+
+    .item {
+      color: var(--color-green);
+    }
+  }
 }

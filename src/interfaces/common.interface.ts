@@ -1,3 +1,4 @@
+import { SSRConfig } from "next-i18next";
 
 export interface ILinkItem {
   title: string;
@@ -39,3 +40,7 @@ export interface IHeadData {
   footerData: IFooterData;
   headerData: IHeaderData;
 }
+
+export interface IPageWithLayout extends SSRConfig {
+  headData: IHeadData;
+};

@@ -5,11 +5,14 @@ import { useTranslation } from "next-i18next";
 import Logo from "../Common/Logo";
 import classes from './Navigation.module.scss';
 import { Call } from 'iconsax-react';
+import classNames from "classnames";
+import { useRouter } from "next/router";
 
 function Navigation() {
   const { headData } = useGlobalContext();
   const { links = [], phoneNumber } = headData?.headerData || {};
   const { t } = useTranslation();
+  const router = useRouter();
 
   const navigationItemEls = links.map((item, index) => {
     return (
@@ -26,7 +29,10 @@ function Navigation() {
   });
 
   return (
-    <header className={classes.navigation}>
+    <header className={classNames(
+      classes.navigation,
+      { [classes.notHome]: router.pathname !== '/' }
+    )}>
       <div className="container">
         <nav role="navigation" className={classes.content}>
           <Logo />
@@ -35,8 +41,8 @@ function Navigation() {
           </ul>
           <a
             href={`tel:${phoneNumber}`} 
-            title={t('phoneDescription')!}
-            className="btn btn--pill"
+            title={t('phoneDescription')!} 
+            className={classNames(classes.link, "btn btn--pill")}
           >
             <Call />
             {phoneNumber}

@@ -5,15 +5,15 @@ import { DEFAULT_LOCALE } from "@/interfaces/locales.interface";
 import { fetchMainData } from "@/utils/fetch.utils";
 import { GetStaticProps } from "next";
 import { homeData } from '@/config/home.config';
-import { footerData } from '@/config/footer.config';
 import ToursSection from "@/components/ToursSection/ToursSection";
 import ImageBanner from "@/components/ImageBanner/ImageBanner";
 import PlacesOfInterest from "@/components/PlacesOfInterest/PlacesOfInterest";
 import PhotoGallery from "@/components/PhotoGallery/PhotoGallery";
 import Countries from '@components/Countries/Coutries';
 import Faq from "@/components/Faq/Faq";
+import { IPageWithLayout } from "@/interfaces/common.interface";
 
-interface HomePageProps {
+interface HomePageProps extends IPageWithLayout {
   homeData: IHomeData;
 }
 
