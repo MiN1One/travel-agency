@@ -16,7 +16,11 @@ function ImageCard({ item }: ImageCardProps) {
   return (
     <div 
       role="cell" 
-      className={classNames('overlay', classes.card)}
+      className={classNames(
+        'overlay', 
+        classes.card,
+        { [classes.hasDescription]: item.description }
+      )}
     >
       <figure className={classes.image}>
         <img 

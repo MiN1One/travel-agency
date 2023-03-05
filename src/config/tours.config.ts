@@ -14,7 +14,7 @@ export const tours: IItem[] = [
     title: 'Tashkent TV tower',
     image: image1.src,
     description: '',
-    id: 0,
+    id: 2,
     link: '/tours/0',
     type: 'tour'
   },
@@ -22,7 +22,7 @@ export const tours: IItem[] = [
     title: 'Tashkent TV tower',
     image: image1.src,
     description: '',
-    id: 0,
+    id: 1,
     link: '/tours/0',
     type: 'tour'
   },
@@ -30,7 +30,7 @@ export const tours: IItem[] = [
     title: 'Tashkent TV tower',
     image: image1.src,
     description: '',
-    id: 0,
+    id: 3,
     link: '/tours/0',
     type: 'tour'
   },
@@ -38,7 +38,7 @@ export const tours: IItem[] = [
     title: 'Tashkent TV tower',
     image: image1.src,
     description: '',
-    id: 0,
+    id: 4,
     link: '/tours/0',
     type: 'tour'
   },
@@ -46,7 +46,7 @@ export const tours: IItem[] = [
     title: 'Tashkent TV tower',
     image: image1.src,
     description: '',
-    id: 0,
+    id: 6,
     link: '/tours/0',
     type: 'tour'
   },

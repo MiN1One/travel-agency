@@ -1,17 +1,28 @@
+import classNames from 'classnames';
 import { memo } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide, SwiperProps } from 'swiper/react';
 import classes from './TagsSlider.module.scss';
 
-interface TagsSliderProps {
+interface TagsSliderProps extends SwiperProps {
   items: string[];
+  activeItem?: string;
   onClickItem: (value: string) => void;
 }
 
-function TagsSlider({ items, onClickItem }: TagsSliderProps) {
+function TagsSlider(props: TagsSliderProps) {
+  const { items, onClickItem, activeItem, ...rest } = props;
+
   const tagEls = items.map((item, index) => {
     return (
       <SwiperSlide 
-        className={classes.item} 
+        tabIndex={0}
+        key={index}
+        className={classNames(
+          classes.item,
+          { [classes.active]: item === activeItem }
+        )} 
         onClick={() => onClickItem(item)}
       >
         {item}
@@ -20,9 +31,26 @@ function TagsSlider({ items, onClickItem }: TagsSliderProps) {
   });
 
   return (
-    <Swiper className={classes.slider}>
-      {tagEls}
-    </Swiper>
+    <div className={classes.sliderWrapper}>
+      <Swiper 
+        slidesPerView={5}
+        {...rest}
+        className={classes.slider}
+        modules={[Navigation]}
+        navigation={{
+          prevEl: `.${classes.prev}`,
+          nextEl: `.${classes.next}`,
+        }}
+      >
+        {tagEls}
+      </Swiper>
+      <button className={classNames(classes.btnControl, classes.prev)}>
+        <HiOutlineChevronLeft />
+      </button>
+      <button className={classNames(classes.btnControl, classes.next)}>
+        <HiOutlineChevronRight />
+      </button>
+    </div>
   );
 }
 

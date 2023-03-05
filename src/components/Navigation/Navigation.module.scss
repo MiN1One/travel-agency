@@ -1,7 +1,7 @@
 .navigation {
   position: relative;
   z-index: 9999;
-  
+
   .content {
     height: var(--header-height);
     display: flex;
@@ -28,7 +28,7 @@
     &::after {
       content: "\2022";
       display: inline-block;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       font-size: 0;
       opacity: 0;
       font-family: sans-serif;
@@ -38,7 +38,7 @@
       align-items: center;
       height: 0;
     }
-    
+
     &:hover::after {
       height: 1.75rem;
       opacity: 1;
@@ -47,9 +47,16 @@
   }
 
   &.notHome {
-
-    .item {
+    .item,
+    .btn {
       color: var(--color-green);
+    }
+
+    .btn {
+      border-color: var(--color-green);
+      svg {
+        color: var(--color-green);
+      }
     }
   }
 }

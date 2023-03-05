@@ -29,6 +29,8 @@ export interface IItem {
   type: string;
   description?: string;
   id: number;
+  images?: string[];
+  price?: string;
 }
 
 export interface IHeaderData {

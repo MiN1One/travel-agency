@@ -1,6 +1,54 @@
-.slider {
+.sliderWrapper {
+  width: 100%;
+  position: relative;
+  
+  .slider {
+    width: 100%;
+    border: 1px solid var(--color-green);
+  }
 
   .item {
+    border-right: 1px solid var(--color-green);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--color-font-dark);
 
+    &:hover,
+    &:focus,
+    &.active {
+      background: var(--color-green-opaque);
+    }
+  }
+
+  .btnControl {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);  
+    width: 3.25rem;
+    height: 3.25rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-green);
+    background: #fff;
+
+    &.prev {
+      left: -1.625rem;
+    }
+
+    &.next {
+      right: -1.625rem;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      color: var(--color-font-dark);
+    }
   }
 }
