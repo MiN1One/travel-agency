@@ -1,9 +1,11 @@
 import Layout from '@/components/Common/Layout';
 import { IItem, IPageWithLayout } from '@interfaces/common.interface';
-import SingleTour from '@/components/SingleTour/SingleTour';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { DEFAULT_LOCALE } from '@/interfaces/locales.interface';
 import { fetchMainData } from '@/utils/fetch.utils';
+import { tour } from '@/config/tour.config';
+import SingleTour from '@/components/SingleTour/SingleTour';
+import { tours } from '@/config/tours.config';
 
 interface SingleTourPageProps extends IPageWithLayout {
   tour: IItem;
@@ -14,10 +16,10 @@ function SingleTourPage(props: SingleTourPageProps) {
 
   return (
     <Layout>
-      {/* <SingleTour 
+      <SingleTour 
         tour={props.tour}
         recommendedTours={props.recommendedTours}
-      /> */}
+      />
     </Layout>
   );
 }
@@ -32,7 +34,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (ctx) => { 
+export const getStaticProps: GetStaticProps<SingleTourPageProps> = async (ctx) => { 
   const locale = ctx.locale || ctx.defaultLocale || DEFAULT_LOCALE;
   const [headData] = await Promise.all([
     fetchMainData(locale),
@@ -40,6 +42,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       ...headData,
+      tour,
+      recommendedTours: tours
     }
   };
 }

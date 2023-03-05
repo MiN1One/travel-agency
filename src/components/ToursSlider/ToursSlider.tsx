@@ -21,8 +21,15 @@ function ToursSlider({ tours }: ToursSliderProps) {
   return (
     <Swiper
       freeMode
+      loop
+      spaceBetween={20}
       modules={[FreeMode]}
       slidesPerView={5.5}
+      breakpoints={{
+        1600: {
+          slidesPerView: 6.5
+        }
+      }}
     >
       {cardEls}
     </Swiper>

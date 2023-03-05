@@ -25,5 +25,9 @@
   "facebook": "facebook",
   "home": "home",
   "socialMedia": "socialMedia",
-  "beTheFirst": "beTheFirst"
+  "beTheFirst": "beTheFirst",
+  "bookTour": "bookTour",
+  "askQuestion": "askQuestion",
+  "image": "image",
+  "imageNavigation": "imageNavigation"
 }

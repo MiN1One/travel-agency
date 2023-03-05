@@ -32,16 +32,14 @@ function Breadcrumbs({ items }: BreadcrumbsProps) {
   });
 
   return (
-    <div className="container">
-      <ul className={classes.breads}>
-        <li className={classes.item} aria-label={t("home")!}>
-          <Link href="/" title={t("home")!}>
-            {t("home")!}
-          </Link>
-        </li>
-        {breadItemEls}
-      </ul>
-    </div>
+    <ul className={classes.breads}>
+      <li className={classes.item} aria-label={t("home")!}>
+        <Link href="/" title={t("home")!}>
+          {t("home")!}
+        </Link>
+      </li>
+      {breadItemEls}
+    </ul>
   );
 }
 
