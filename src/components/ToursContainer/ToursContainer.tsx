@@ -7,14 +7,24 @@ import classes from "./ToursContainer.module.scss";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import TagsSlider from "../TagsSlider/TagsSlider";
 import Pagination from "../Pagination/Pagination";
+import classNames from "classnames";
 
 interface ToursContainerProps {
   tours: IItem[];
   tourTypes?: ITourType[];
+  bradcrumbValue?: string;
+  showTypes?: boolean;
+  title?: string;
 }
 
 function ToursContainer(props: ToursContainerProps) {
-  const { tours, tourTypes = [] } = props;
+  const {
+    tours,
+    tourTypes = [],
+    bradcrumbValue = 'tours',
+    showTypes = true,
+    title,
+  } = props;
   const { t } = useTranslation();
   const [activePage, setActivePage] = useState(1);
   const [activeType, setActiveType] = useState<string | null>(null);
@@ -24,27 +34,36 @@ function ToursContainer(props: ToursContainerProps) {
   });
 
   const types = useMemo(() => {
+    if (!showTypes) return [];
     if (tourTypes.length) {
       return tourTypes.map(({ title }) => title);
     }
     return tours.map(({ type }) => type);
-  }, [tourTypes, tours]);
+  }, [tourTypes, tours, showTypes]);
 
   return (
-    <section className={classes.tours}>
+    <section className={classNames(
+      classes.tours,
+      { [classes.witTypes]: showTypes }
+    )}>
       <div className="container">
-        <Breadcrumbs items={[{ value: "tours", link: "/tours" }]} />
+        <Breadcrumbs items={[{
+          value: bradcrumbValue as any,
+          link: "/tours"
+        }]} />
         <div className={classes.head}>
-          <h1 className="heading heading--1 text--dark text--upc">
-            {t('tours')}
+          <h1 className="heading heading--1 text--dark text--upc text-overflow">
+            {title || t('tours')}
           </h1>
-          <div className={classes.tags}>
-            <TagsSlider
-              items={types}
-              onClickItem={setActiveType}
-              activeItem={activeType || ''}
-            />
-          </div>
+          {showTypes && (
+            <div className={classes.tags}>
+              <TagsSlider
+                items={types}
+                onClickItem={setActiveType}
+                activeItem={activeType || ''}
+              />
+            </div>
+          )}
         </div>
         <div className={classes.list}>
           {tourEls}

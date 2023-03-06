@@ -19,7 +19,7 @@ function QuestionForm({ tour }: QuestionFormProps) {
   const { t } = useTranslation();
 
   const onSubmitForm = useCallback(() => {
-    
+
   }, [form]);
 
   const onFormChange = useCallback(
@@ -30,7 +30,7 @@ function QuestionForm({ tour }: QuestionFormProps) {
 
   return (
     <Form
-      title={t("bookTour")!}
+      title={t('sendMessage')!}
       label={t("fillFields")!}
       onSubmit={onSubmitForm}
       submitTitle={t('sendMessage')!}

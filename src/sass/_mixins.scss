@@ -1,0 +1,38 @@
+@mixin respond($breakpoint) {
+  // min - 1401
+  @if ($breakpoint == 'wide') {
+    @media screen and (min-width: 87.5625em) {
+      @content;
+    }
+  }
+  // 1400
+  @if ($breakpoint == 'desktop') {
+    @media screen and (max-width: 87.5em) {
+      @content;
+    }
+  }
+  // 1024
+  @if ($breakpoint == 'tablet') {
+    @media screen and (max-width: 64em) {
+      @content;
+    }
+  }
+  // 768
+  @if ($breakpoint == 'mid') {
+    @media screen and (max-width: 48em) {
+      @content;
+    }
+  }
+  // 450
+  @if ($breakpoint == 'sm') {
+    @media screen and (max-width: 28.125em) {
+      @content;
+    }
+  }
+  // 400
+  @if ($breakpoint == 'xs') {
+    @media screen and (max-width: 25em) {
+      @content;
+    }
+  }
+}

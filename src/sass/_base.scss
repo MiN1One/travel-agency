@@ -8,6 +8,10 @@
 
 html {
   font-size: 62.5%;
+
+  @include respond('tablet') {
+    font-size: 56.25%;
+  }
 }
 
 body {
@@ -33,7 +37,7 @@ ul {
 svg {
   width: 4rem;
   height: 4rem;
-  color: #fff;
+  color: inherit;
 }
 
 input,

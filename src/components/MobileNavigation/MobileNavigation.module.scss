@@ -1,0 +1,83 @@
+.navigation {
+  position: relative;
+  z-index: 9999;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+  }
+
+  .drawer {
+    background: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    z-index: 9999;
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+
+    &.active {
+      transform: translate(0);
+    }
+  }
+
+  .btnClose,
+  .btnOpen {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(#fff, .4);
+
+    svg {
+      color: #fff;
+    }
+  }
+
+  .btnClose {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1;
+    border-color: var(--color-font-dark);
+
+    svg { color: var(--color-font-dark); }
+  }
+
+  .list {
+    margin-top: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .phone {
+    display: flex;
+    align-items: center;
+    color: var(--color-font-dark);
+    gap: 1rem;
+    margin-top: 2.5rem;
+    font-size: 1.6rem;
+  }
+  
+  .item {
+    color: var(--color-font-dark);
+    font-size: 1.4rem;
+    border-bottom: 1px solid var(--color-green);
+    width: max-content;
+  }
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}
