@@ -11,18 +11,20 @@
 
   .image {
     flex-shrink: 0;
-    box-shadow: 0 0 2rem rgba(0,0,0,.1);
-    border-radius: .5rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
     overflow: hidden;
 
     &.center {
       position: relative;
       z-index: 99;
       transform: scale(1.05);
-      box-shadow: 1rem 1rem 5rem rgba(0,0,0,.1);
+      box-shadow: 1rem 1rem 3rem rgba(0, 0, 0, 0.3);
     }
 
-    img { object-fit: cover; }
+    img {
+      object-fit: cover;
+    }
   }
 
   .image:not(.center) {

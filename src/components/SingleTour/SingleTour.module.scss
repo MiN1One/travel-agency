@@ -3,10 +3,6 @@
   .contentWrapper {
     padding-top: 2rem;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
   }
 
   .head {
@@ -38,7 +34,8 @@
   }
 
   .description,
-  .priceContainer {
+  .priceContainer,
+  .formWrapper {
     background: var(--color-light);
     padding: 2rem 2.5rem;
     border-radius: 2rem;
@@ -118,5 +115,13 @@
   .recommendedTours {
     width: 100%;
     margin-bottom: 7rem;
+  }
+
+  .formWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80rem;
+    margin-bottom: 4rem;
   }
 }

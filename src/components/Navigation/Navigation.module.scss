@@ -23,7 +23,9 @@
   .item a {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 3.25rem;
 
     &::after {
       content: "\2022";

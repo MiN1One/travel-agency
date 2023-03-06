@@ -23,6 +23,10 @@
   color: var(--color-font-primary);
   font-family: var(--font-tertiary);
 
+  &--error {
+    color: var(--color-red);
+  }
+
   &--high {
     line-height: 2.4rem;
   }
