@@ -23,6 +23,12 @@
       @content;
     }
   }
+  // 550
+  @if ($breakpoint == 'mid-lower') {
+    @media screen and (max-width: 34.375em) {
+      @content;
+    }
+  }
   // 450
   @if ($breakpoint == 'sm') {
     @media screen and (max-width: 28.125em) {

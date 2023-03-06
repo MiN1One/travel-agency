@@ -15,6 +15,7 @@ import {
 import classNames from "classnames";
 import { IFooterData } from "@/interfaces/common.interface";
 import { TbBrandTelegram } from "react-icons/tb";
+import SafeHydrate from "../Common/SafeHydrate";
 
 const socialMediaIconsMap: Record<
   keyof IFooterData["socialLinks"],
@@ -29,6 +30,7 @@ const socialMediaIconsMap: Record<
 
 function Footer() {
   const { headData } = useGlobalContext();
+  const { media } = useGlobalContext();
   const { footerData } = headData || {};
   const { t } = useTranslation();
   const [form, setForm] = useState({
@@ -135,9 +137,13 @@ function Footer() {
                 </span>
               </div>
             </div>
-            <div className={classes.listHorizontal}>
-              {linkEls}
-            </div>
+            <SafeHydrate>
+              {!media.mobile && (
+                <div className={classes.listHorizontal}>
+                  {linkEls}
+                </div>
+              )}
+            </SafeHydrate>
           </div>
           <div className={classes.formWrapper}>
             <div className={classes.titleGroup}>
@@ -182,6 +188,13 @@ function Footer() {
             <div className={classes.socialLinks}>
               {socialMediaLinkEls}
             </div>
+            <SafeHydrate>
+              {media.mobile && (
+                <div className={classes.listHorizontal}>
+                  {linkEls}
+                </div>
+              )}
+            </SafeHydrate>
           </div>
         </div>
       </div>

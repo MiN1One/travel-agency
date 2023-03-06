@@ -1,3 +1,19 @@
+@use '../../sass/mixins' as *;
+
+@mixin unwrapContent() {
+  .description {
+    height: 6.25rem;
+  }
+
+  .title {
+    bottom: 10rem;
+  }
+
+  .content {
+    opacity: 1;
+  }
+}
+
 .card {
   overflow: hidden;
   position: relative;
@@ -30,9 +46,7 @@
   .image {
     z-index: 1;
 
-    img {
-      object-fit: cover;
-    }
+    img { object-fit: cover; }
   }
 
   .title {
@@ -71,17 +85,11 @@
     }
 
     &:hover {
-      .description {
-        height: 6.25rem;
-      }
-
-      .title {
-        bottom: 10rem;
-      }
-
-      .content {
-        opacity: 1;
-      }
+      @include unwrapContent();
+    }
+    
+    @include respond('mid') {
+      @include unwrapContent();
     }
   }
 }

@@ -23,7 +23,7 @@ function Hero({ homeData }: HeroProps) {
     return homeData.places.find(({ id }) => id === activePlaceId);
   }, [activePlaceId]);
 
-  const placeEls = homeData.places.map((place, index) => {
+  const tourEls = homeData.places.map((place, index) => {
     const isActive = activePlaceId === place.id;
     let activeNumber: any = index + 1,
       allPlacesCount: any = homeData.places.length;
@@ -94,7 +94,9 @@ function Hero({ homeData }: HeroProps) {
   return (
     <section className={classes.hero}>
       {bgImages}
-      <h1 className="heading heading--xlg">{homeData.mainTitle}</h1>
+      <h1 className="heading heading--xlg">
+        {homeData.mainTitle}
+      </h1>
       {activePlaceObj?.previewLink && (
         <Link
           className={classes.btnPlay}
@@ -107,7 +109,7 @@ function Hero({ homeData }: HeroProps) {
           </span>
         </Link>
       )}
-      <div className={classes.list}>{placeEls}</div>
+      <div className={classes.list}>{tourEls}</div>
       <div className={classes.socialLinks}>
         <div className="container">
           <div className={classes.linksContent}>

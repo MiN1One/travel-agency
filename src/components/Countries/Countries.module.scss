@@ -1,3 +1,5 @@
+@use '../../sass/mixins' as *;
+
 .countries {
   margin-bottom: 7rem;
 
@@ -15,26 +17,40 @@
   }
 
   .list {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
     gap: 3rem;
-    flex-wrap: wrap;
+
+    @include respond('tablet') {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @include respond('mid-lower') {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
   }
 
   .item {
     border-radius: 50%;
-    width: 8rem;
-    height: 8rem;
     overflow: hidden;
-
-    figure {
-      width: 100%;
-      height: 100%;
-    }
+    width: 100%;
+    height: 0;
+    position: relative;
+    padding-bottom: 100%;
 
     img {
       object-fit: cover;
       object-position: center;
+    }
+
+    figure {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
     }
   }
 }

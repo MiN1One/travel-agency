@@ -38,10 +38,12 @@ function Faq({ items }: FaqProps) {
   return (
     <SafeHydrate>
       <section className={classes.faq}>
-        <div className={classes.content}>
-          <ul className={classes.list}>
-            {faqItemEls}
-          </ul>
+        <div className="container">
+          <div className={classes.content}>
+            <ul className={classes.list}>
+              {faqItemEls}
+            </ul>
+          </div>
         </div>
       </section>
     </SafeHydrate>

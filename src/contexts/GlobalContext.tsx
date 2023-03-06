@@ -26,6 +26,7 @@ export const GlobalContextProvider: FC<GlobalContextProviderProps> =
   ({ children, initialData }) => {
     const [headData, setHeadData] = useState<IHeadData | null>(initialData || null);
     const media = useMedia(
+      ['xs', 'only screen and (max-width: 34.375em)'],
       ['mobile', 'only screen and (max-width: 48em)'],
       ['tablet', 'only screen and (max-width: 64em)'],
       ['wide', '(min-width: 87.5em)']

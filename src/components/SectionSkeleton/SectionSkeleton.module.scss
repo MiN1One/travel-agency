@@ -1,15 +1,22 @@
+@use '../../sass/mixins' as *;
+
 .section {
   margin: 10rem 0;
 
-  .content {
-  
+  @include respond('mid') {
+    margin: 6rem 0;
   }
 
   .heading {
     text-transform: uppercase;
-  }
 
+  }
+  
   .head {
     margin-bottom: 6rem;
+
+    @include respond('mid') {
+      margin-bottom: 3rem;
+    }
   }
 }

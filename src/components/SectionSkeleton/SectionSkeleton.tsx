@@ -44,12 +44,12 @@ function SectionSkeleton(props: SectionSkeletonProps) {
         {(title || headContent) && (
           <div className={classNames(classes.head, headClassName)}>
             {title && (
-              <h1 className={classNames(
+              <h5 className={classNames(
                 classes.heading, 
-                "heading heading--1 text--dark"
+                "heading heading--1 text--dark text-overflow"
               )}>
                 {title}
-              </h1>
+              </h5>
             )}
             {headContent}
           </div>

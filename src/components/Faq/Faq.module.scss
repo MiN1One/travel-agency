@@ -1,5 +1,11 @@
+@use '../../sass/mixins' as *;
+
 .faq {
   margin-bottom: 20rem;
+
+  @include respond('mid') {
+    margin-bottom: 6rem;
+  }
 
   .content {
     max-width: 95rem;
@@ -44,6 +50,16 @@
       transition: transform .2s linear;
       color: var(--color-font-dark);
       opacity: .8;
+      margin-left: 2rem;
+    }
+
+    @include respond('mid') {
+      font-size: 1.6rem;
+
+      svg {
+        width: 2.75rem;
+        height: 2.75rem;
+      }
     }
   }
 

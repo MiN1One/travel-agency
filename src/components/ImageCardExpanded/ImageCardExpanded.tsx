@@ -13,9 +13,21 @@ interface ImageCardExpandedProps {
 function ImageCardExpanded({ item }: ImageCardExpandedProps) {
   const { t } = useTranslation();
 
+  const image = (
+    <figure className={classNames(classes.image, 'overlay')}>
+      <img 
+        width="100%"
+        height="100%"
+        alt={item.title}
+        src={item.image}
+      />
+    </figure>
+  );
+
   return (
     <div className={classes.card}>
       <div className={classes.content}>
+        {image}
         <span className={classes.label}>
           {item.type}
         </span>
@@ -28,14 +40,7 @@ function ImageCardExpanded({ item }: ImageCardExpandedProps) {
           </p>
         )}
       </div>
-      <figure className={classNames(classes.image, 'overlay')}>
-        <img 
-          width="100%"
-          height="100%"
-          alt={item.title}
-          src={item.image}
-        />
-      </figure>
+      {image}
       <Link 
         className={classNames(
           'link link--arrow btn btn--pill btn--opaque btn--sm', 

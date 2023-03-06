@@ -1,14 +1,32 @@
 .heading {
   font-size: 2rem;
   font-family: var(--font-secondary);
+  max-width: 100%;
+  display: inline-block;
 
   &--xlg {
     font-size: 10rem;
     text-transform: uppercase;
+
+    @include respond('tablet') {
+      font-size: 7rem;
+    }
+
+    @include respond('mid-lower') {
+      font-size: 5rem;
+    }
+
+    @include respond('xs') {
+      font-size: 4rem;
+    }
   }
 
   &--1 {
     font-size: 5rem;
+
+    @include respond('mid-lower') {
+      font-size: 4rem;
+    }
   }
 
   &--6 {

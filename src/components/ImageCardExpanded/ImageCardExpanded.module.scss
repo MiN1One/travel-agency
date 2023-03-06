@@ -1,3 +1,5 @@
+@use '../../sass/mixins' as *;
+
 .card {
   display: flex;
   height: var(--expanded-card-height);
@@ -18,9 +20,12 @@
       border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
     }
 
-    &,
-    &::after {
+    &, &::after {
       transition: all .4s ease;
+    }
+
+    @include respond('mid') {
+      display: none;
     }
   }
 
@@ -36,6 +41,16 @@
     background: var(--color-blue);
     border-radius: var(--card-border-radius) 0 0 var(--card-border-radius);
     transform: translateX(1px);
+  
+    .image {
+      display: none;
+    }
+
+    @include respond('mid') {
+      .image {
+        display: block;
+      }
+    }
   }
 
   .label {
@@ -60,6 +75,8 @@
     bottom: 2rem;
     left: 2rem;
     z-index: 10;
+    font-size: .95rem;
+    font-family: var(--font-primary);
   }
 
   &:hover {
@@ -71,7 +88,7 @@
       &:hover { color: var(--color-green); }
     }
 
-    svg { color: var(--color-font-dark); }
+    svg { color: var(--color-font-green); }
 
     .image,
     .image::after {
@@ -79,5 +96,11 @@
     }
 
     .image::after { opacity: 0; }
+
+    @include respond('mid') {
+      .content {
+        width: 25%;
+      }
+    }
   }
 }

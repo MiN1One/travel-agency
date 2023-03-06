@@ -1,3 +1,5 @@
+@use '../../sass/mixins' as *;
+
 .places {
 
   .list {
@@ -15,6 +17,18 @@
 
     &:hover {
       width: 50%;
+      
+      @include respond('mid') {
+        width: 25%;
+      }
+    }
+
+  }
+
+  h5 {
+
+    @include respond('mid-lower') {
+      font-size: 2.5rem;
     }
   }
 }

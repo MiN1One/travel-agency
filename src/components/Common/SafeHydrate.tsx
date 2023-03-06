@@ -19,7 +19,7 @@ function SafeHydrate({
     setContentRendered(true);
   }, []);
 
-  if (!contentRendered) return null;
+  if (!contentRendered || !children) return null;
 
   return (
     <div

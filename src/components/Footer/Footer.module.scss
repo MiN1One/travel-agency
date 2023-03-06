@@ -1,6 +1,12 @@
+@use '../../sass/mixins' as *;
+
 .footer {
   padding: 5rem 0 7rem 0;
   background: var(--color-dark);
+
+  @include respond('mid') {
+    padding-top: 2rem;
+  }
 
   .logo {
     width: 17.5rem;
@@ -17,6 +23,16 @@
 
     &:not(:last-child) {
       justify-content: space-between;
+    }
+
+    @include respond('mid') {
+      &:first-child {
+        margin-bottom: 2rem;
+        row-gap: 2rem;
+      }
+      &:last-child {
+        margin-top: 4rem;
+      }
     }
   }
 
@@ -62,6 +78,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 10rem;
+
+    @include respond('mid') {
+      grid-template-columns: 1fr;
+    }
   }
 
   .formWrapper {
@@ -78,6 +98,10 @@
     display: flex;
     gap: .8rem;
     flex-wrap: wrap;
+
+    @include respond('mid') {
+      margin-bottom: 2rem;
+    }
   }
 
   .titleGroup {
