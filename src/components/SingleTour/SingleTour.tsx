@@ -10,6 +10,7 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import ToursSlider from "../ToursSlider/ToursSlider";
 import BookTourForm from "../BookTourForm/BookTourForm";
 import QuestionForm from "../QuestionForm/QuestionForm";
+import SafeHydrate from "../Common/SafeHydrate";
 
 interface SingleTourProps {
   tour: IItem;
@@ -152,9 +153,11 @@ function SingleTour({ tour, recommendedTours }: SingleTourProps) {
           </div>
         </div>
       </div>
-      <div className={classes.recommendedTours}>
-        <ToursSlider tours={recommendedTours || []} />
-      </div>
+      {recommendedTours && recommendedTours.length > 0 && (
+        <div className={classes.recommendedTours}>
+          <ToursSlider tours={recommendedTours} />
+        </div>
+      )}
     </main>
   );
 }

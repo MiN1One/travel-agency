@@ -1,3 +1,5 @@
+@use '../../sass/mixins' as *;
+
 .tour {
   
   .contentWrapper {
@@ -20,11 +22,28 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include respond('mid') {
+      align-items: flex-start;
+      flex-direction: column;
+      row-gap: 1rem;
+    }
   }
 
   .actions {
     display: flex;
     gap: 1rem;
+
+    @include respond('mid') {
+      width: 100%;
+      
+      button:first-child {
+        order: 1;
+      }
+      button {
+        width: calc(50% - .5rem);
+      }
+    }
   }
 
   .price {
@@ -39,6 +58,11 @@
     background: var(--color-light);
     padding: 2rem 2.5rem;
     border-radius: 2rem;
+
+    @include respond('mid') {
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+    }
   }
 
   .description {
@@ -50,6 +74,11 @@
       line-height: 2.4rem;
       color: var(--color-font-dark);
       margin: 0 auto;
+    }
+
+    @include respond('mid') {
+      padding: 2rem 1.5rem;
+      margin-bottom: 2.5rem;
     }
   }
 
@@ -66,6 +95,10 @@
     img {
       object-fit: cover;
     }
+
+    @include respond('mid') {
+      height: 70vw;
+    }
   }
 
   .btnGroup {
@@ -80,6 +113,11 @@
   .images {
     border-radius: 2.5rem;
     margin-bottom: 4rem;
+
+    @include respond('mid') {
+      border-radius: 1rem;
+      margin-bottom: 3rem;
+    }
   }
 
   .dots {
@@ -115,6 +153,10 @@
   .recommendedTours {
     width: 100%;
     margin-bottom: 7rem;
+    
+    @include respond('mid') {
+      padding-left: 1rem;
+    }
   }
 
   .formWrapper {
@@ -123,5 +165,9 @@
     justify-content: center;
     min-height: 80rem;
     margin-bottom: 4rem;
+
+    @include respond('mid') {
+      min-height: 60rem;
+    }
   }
 }

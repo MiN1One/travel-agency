@@ -44,7 +44,7 @@ function ToursContainer(props: ToursContainerProps) {
   return (
     <section className={classNames(
       classes.tours,
-      { [classes.witTypes]: showTypes }
+      { [classes.withTypes]: showTypes }
     )}>
       <div className="container">
         <Breadcrumbs items={[{

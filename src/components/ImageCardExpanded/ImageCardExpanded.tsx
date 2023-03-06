@@ -3,7 +3,7 @@ import Link from "next/link";
 import { memo } from "react";
 import { useTranslation } from "next-i18next";
 import CustomIcon from "../Common/CustomIcon";
-import classes from './ImageCardExpanded.module.scss';
+import classes from "./ImageCardExpanded.module.scss";
 import classNames from "classnames";
 
 interface ImageCardExpandedProps {
@@ -14,46 +14,46 @@ function ImageCardExpanded({ item }: ImageCardExpandedProps) {
   const { t } = useTranslation();
 
   const image = (
-    <figure className={classNames(classes.image, 'overlay')}>
-      <img 
-        width="100%"
-        height="100%"
-        alt={item.title}
-        src={item.image}
-      />
+    <figure className={classNames(classes.image, "overlay")}>
+      <img width="100%" height="100%" alt={item.title} src={item.image} />
     </figure>
+  );
+
+  const link = (
+    <Link
+      className={classNames(
+        "link link--arrow btn btn--pill btn--opaque btn--sm",
+        classes.link
+      )}
+      title={t("viewMore")!}
+      href={item.link || `/tours/${item.id}`}
+    >
+      {t("viewMore")}
+      <CustomIcon iconName="arrow-right" />
+    </Link>
   );
 
   return (
     <div className={classes.card}>
       <div className={classes.content}>
         {image}
-        <span className={classes.label}>
-          {item.type}
-        </span>
+        <span className={classes.label}>{item.type}</span>
         {item.description && (
-          <p className={classNames(
-            'text text--xl text--dark text--high', 
-            classes.description
-          )}>
+          <p
+            className={classNames(
+              "text text--xl text--dark text--high",
+              classes.description
+            )}
+          >
             {item.description}
           </p>
         )}
+        {link}
       </div>
       {image}
-      <Link 
-        className={classNames(
-          'link link--arrow btn btn--pill btn--opaque btn--sm', 
-          classes.link
-        )}
-        title={t('viewMore')!} 
-        href={item.link || `/tours/${item.id}`}
-      >
-        {t('viewMore')}
-        <CustomIcon iconName="arrow-right" />
-      </Link>
+      {link}
     </div>
-  )
+  );
 }
 
 export default memo(ImageCardExpanded);

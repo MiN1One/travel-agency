@@ -8,6 +8,11 @@
     column-gap: 3rem;
     overflow-y: auto;   
     border-radius: var(--card-border-radius); 
+
+    @include respond('mid') {
+      flex-direction: column;
+      row-gap: 2rem;
+    }
   }
 
   .item {
@@ -19,7 +24,7 @@
       width: 50%;
       
       @include respond('mid') {
-        width: 25%;
+        width: 100%;
       }
     }
 

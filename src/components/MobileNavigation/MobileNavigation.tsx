@@ -9,12 +9,14 @@ import classNames from "classnames";
 import { VscClose } from "react-icons/vsc";
 import useHideScrollbar from "@/hooks/useHideScrollbar";
 import { CallCalling } from "iconsax-react";
+import { useRouter } from "next/router";
 
 function MobileNavigation() {
   const { headData } = useGlobalContext();
   const { links, phoneNumber } = headData?.headerData || {};
   const { t } = useTranslation();
   const [showDrawer, setShowDrawer] = useState(false);
+  const router = useRouter();
 
   useHideScrollbar(showDrawer);
 
@@ -33,7 +35,10 @@ function MobileNavigation() {
   });
 
   return (
-    <header className={classes.navigation}>
+    <header className={classNames(
+      classes.navigation,
+      { [classes.home]: router.pathname === '/' }
+    )}>
       <div 
         role="dialog" 
         className={classNames(

@@ -1,6 +1,7 @@
 .navigation {
   position: relative;
   z-index: 9999;
+  padding-bottom: 1rem;
 
   .content {
     display: flex;
@@ -79,5 +80,15 @@
   svg {
     width: 3rem;
     height: 3rem;
+  }
+
+  &:not(.home) {
+    .btnOpen {
+      border-color: var(--color-font-dark);
+      
+      svg {
+        color: var(--color-font-dark);
+      }
+    }
   }
 }

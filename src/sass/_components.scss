@@ -3,7 +3,7 @@
   margin: 0 auto;
 
   @include respond('desktop') {
-    padding: 0 2rem;
+    padding: 0 1.5rem;
   }
 }
 
@@ -191,7 +191,6 @@
 }
 
 .react-datepicker {
-  
   &__tab-loop {
     position: absolute;
   }
@@ -215,11 +214,16 @@
   & &__day,
   & &__day-name {
     width: 4.7rem;
+
+    @include respond('mid-lower') {
+      width: 3.5rem;
+    }
   }
 }
 
 textarea.input,
 textarea.input-light {
   min-height: 13rem;
+  max-width: 100%;
   resize: none;
 }

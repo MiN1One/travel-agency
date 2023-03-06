@@ -4,6 +4,8 @@ import SectionSkeleton from "../SectionSkeleton/SectionSkeleton";
 import classes from './PhotoGallery.module.scss';
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from 'react-icons/hi';
 import DSlider from "../DSlider/DSlider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper";
 
 interface PhotoGalleryProps {
   images: string[];
@@ -22,6 +24,19 @@ function PhotoGallery({ images }: PhotoGalleryProps) {
     }
     setSlides(slidesCopy);
   }, [slides]);
+
+  const plainImageEls = images.map((image, index) => {
+    return (
+      <SwiperSlide key={index} className={classes.image}>
+        <img 
+          width="100%"
+          height="100%"
+          src={image}
+          alt={t('galleryImage')!}
+        />
+      </SwiperSlide>
+    );
+  });
 
   return (
     <SectionSkeleton
@@ -49,7 +64,20 @@ function PhotoGallery({ images }: PhotoGalleryProps) {
         </>
       )}
     >
-      <DSlider images={slides} />
+      <div className={classes.imagesWrapper}>
+        <Swiper
+          className={classes.images}
+          slidesPerView={1.15}
+          spaceBetween={12}
+          freeMode
+          modules={[FreeMode]}
+        >
+          {plainImageEls}
+        </Swiper>
+      </div>
+      <div className={classes.gallery}>
+        <DSlider images={slides} />
+      </div>
     </SectionSkeleton>
   );
 }

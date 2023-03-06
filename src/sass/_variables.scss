@@ -30,4 +30,9 @@
 
   --home-place-item-transition-duration: .2s;
   --home-place-item-transition-easing: cubic-bezier(.68,0,.99,.12);
+
+  @include respond('mid') {
+    --card-border-radius: 1rem;
+    --expanded-card-width: 100%;
+  }
 }
