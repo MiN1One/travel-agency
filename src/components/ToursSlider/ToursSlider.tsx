@@ -1,11 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { memo } from "react";
-import { IItem } from "@/interfaces/common.interface";
 import ImageCard from "../ImageCard/ImageCard";
 import { FreeMode } from "swiper";
+import { ITour } from "@/interfaces/tour.interface";
 
 interface ToursSliderProps {
-  tours: IItem[];
+  tours: ITour[];
 }
 
 function ToursSlider({ tours }: ToursSliderProps) {

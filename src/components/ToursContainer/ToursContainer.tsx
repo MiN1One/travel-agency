@@ -1,5 +1,4 @@
-import { IItem } from "@/interfaces/common.interface";
-import { ITourType } from "@/interfaces/tour.interface";
+import { ITour, ITourType } from "@/interfaces/tour.interface";
 import { memo, useMemo, useState } from "react";
 import { useTranslation } from "next-i18next";
 import ImageCard from "../ImageCard/ImageCard";
@@ -10,7 +9,7 @@ import Pagination from "../Pagination/Pagination";
 import classNames from "classnames";
 
 interface ToursContainerProps {
-  tours: IItem[];
+  tours: ITour[];
   tourTypes?: ITourType[];
   bradcrumbValue?: string;
   showTypes?: boolean;
@@ -38,7 +37,7 @@ function ToursContainer(props: ToursContainerProps) {
     if (tourTypes.length) {
       return tourTypes.map(({ title }) => title);
     }
-    return tours.map(({ type }) => type);
+    return tours.map(({ tour_category_title }) => tour_category_title!);
   }, [tourTypes, tours, showTypes]);
 
   return (
@@ -55,7 +54,7 @@ function ToursContainer(props: ToursContainerProps) {
           <h1 className="heading heading--1 text--dark text--upc text-overflow">
             {title || t('tours')}
           </h1>
-          {showTypes && (
+          {showTypes && types.length > 0 && (
             <div className={classes.tags}>
               <TagsSlider
                 items={types}

@@ -1,13 +1,13 @@
 import { memo } from "react";
 import { useTranslation } from "next-i18next";
 import SectionSkeleton from "../SectionSkeleton/SectionSkeleton";
-import { IItem } from "@/interfaces/common.interface";
+import { ITour } from "@/interfaces/tour.interface";
 import ImageCardExpanded from "../ImageCardExpanded/ImageCardExpanded";
 import classes from './PlacesOfInterest.module.scss';
 import classNames from "classnames";
 
 interface PlacesOfInterestProps {
-  places: IItem[];
+  places: ITour[];
 }
 
 function PlacesOfInterest({ places }: PlacesOfInterestProps) {

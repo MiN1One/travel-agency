@@ -9,4 +9,4 @@ export type LocaleTypes = keyof typeof ELocales;
 
 export const localeKeys = Object.keys(ELocales);
 
-export const DEFAULT_LOCALE = localeKeys[0];
+export const DEFAULT_LOCALE = localeKeys[1];

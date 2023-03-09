@@ -1,29 +1,39 @@
-import { memo, useState } from "react";
+import { memo, useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import classes from './ToursSection.module.scss';
 import SectionSkeleton from "../SectionSkeleton/SectionSkeleton";
-import { IItem } from "@/interfaces/common.interface";
 import { Swiper, SwiperSlide, } from 'swiper/react';
 import ImageCard from "../ImageCard/ImageCard";
 import Link from "next/link";
-import { ITourType } from "@/interfaces/tour.interface";
+import { ITour, ITourType } from "@/interfaces/tour.interface";
 import classNames from "classnames";
 import { useGlobalContext } from "@/contexts/GlobalContext";
 import SafeHydrate from "../Common/SafeHydrate";
+import { fetchData } from "@/utils/client-fetch.utils";
 
 interface ToursSectionProps {
-  tours: IItem[];
+  tours: ITour[];
   tourTypes?: ITourType[];
 }
 
 function ToursSection({ tours, tourTypes }: ToursSectionProps) {
   const { t } = useTranslation();
   const { media } = useGlobalContext();
+  const [filteredTours, setFilteredTours] = useState<ITour[]>(tours);
   const [activeTourType, setActiveTourType] = useState<
     string | null
   >(null);
 
-  const tourEls = tours.map((tour, index) => {
+  useEffect(() => {
+    if (activeTourType) {
+      fetchData(`/index-tours?tour_category_title=${activeTourType}`)
+        .then(r => r.json())
+        .then(setFilteredTours)
+        .catch(er => console.log(er));
+    }
+  }, [activeTourType]);
+
+  const tourEls = filteredTours.map((tour, index) => {
     return (
       <SwiperSlide key={index}>
         <ImageCard item={tour} />

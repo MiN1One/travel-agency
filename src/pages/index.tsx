@@ -12,6 +12,7 @@ import PhotoGallery from "@/components/PhotoGallery/PhotoGallery";
 import Countries from '@components/Countries/Coutries';
 import Faq from "@/components/Faq/Faq";
 import { IPageWithLayout } from "@/interfaces/common.interface";
+import { fetchData } from "@/utils/client-fetch.utils";
 
 interface HomePageProps extends IPageWithLayout {
   homeData: IHomeData;
@@ -27,7 +28,7 @@ export default function HomePage(props: HomePageProps) {
           tourTypes={props.homeData.tourTypes}
         />
         <ImageBanner banner={props.homeData.banner} />
-        <PlacesOfInterest places={props.homeData.tours} />
+        <PlacesOfInterest places={props.homeData.placesOfInterest} />
         <PhotoGallery images={props.homeData.images} />
         <Countries countries={props.homeData.countries} />
         <Faq items={props.homeData.faq} />
@@ -38,10 +39,35 @@ export default function HomePage(props: HomePageProps) {
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async (ctx) => {
   const locale = ctx.locale || ctx.defaultLocale || DEFAULT_LOCALE;
+  const [
+    headData, 
+    faq, 
+    tours,
+    tourTypes,
+    countries,
+    placesOfInterest,
+    aboutUs
+  ] = await Promise.all([
+    fetchMainData(locale),
+    fetchData('/common-questions', locale),
+    fetchData('/index-tours', locale),
+    fetchData('/index-tour-categories', locale),
+    fetchData('/countries', locale),
+    fetchData('/index-places-of-interest', locale),
+    fetchData('/about-us', locale),
+  ]);
   return {
     props: {
-      ...(await fetchMainData(locale)),
-      homeData,
+      ...headData,
+      homeData: {
+        ...homeData,
+        faq,
+        tours,
+        tourTypes,
+        countries,
+        placesOfInterest,
+        banner: aboutUs[0] || {}
+      },
     },
     revalidate: 100,
   };

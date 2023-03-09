@@ -1,9 +1,10 @@
 import { memo } from "react";
 import { useTranslation } from "next-i18next";
 import classes from './Countries.module.scss';
+import { ICountry } from "@/interfaces/home.interface";
 
 interface CountriesProps {
-  countries: string[];
+  countries: ICountry[];
 }
 
 function Countries({ countries }: CountriesProps) {
@@ -18,8 +19,8 @@ function Countries({ countries }: CountriesProps) {
       >
         <figure>
           <img
-            alt={t('countryImage')!}
-            src={country}
+            alt={country.title}
+            src={country.image_url}
             width="100%"
             height="100%"
           />

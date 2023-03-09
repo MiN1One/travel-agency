@@ -25,6 +25,8 @@ function SingleTourPage(props: SingleTourPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const promises = ctx.locales?.map(locale => {
+  });
 
   return {
     paths: [

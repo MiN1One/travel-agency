@@ -7,19 +7,18 @@ export interface ILinkItem {
 }
 
 export interface IFooterData {
-  companyInfo: {
-    phoneNumber: string;
+  company_info: {
+    phone_number: string;
     address: string;
     email: string;
+    facebook_link: string;
+    instagram_link: string;
+    youtube_link: string;
+    whatsapp_link: string;
+    description: string;
+    telegram_link: string;
   };
-  links: ILinkItem[];
-  socialLinks: {
-    facebook: string;
-    instagram: string;
-    youtube: string;
-    whatsapp: string;
-    telegram: string;
-  };
+  menus: ILinkItem[];
 }
 
 export interface IItem {
@@ -34,8 +33,10 @@ export interface IItem {
 }
 
 export interface IHeaderData {
-  links: ILinkItem[];
-  phoneNumber: string;
+  menus: ILinkItem[];
+  company_info: {
+    contact_phone_number: string;
+  };
 }
 
 export interface IHeadData {

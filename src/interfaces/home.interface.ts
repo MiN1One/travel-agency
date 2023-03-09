@@ -1,5 +1,5 @@
 import { IItem } from "./common.interface";
-import { ITourType } from "./tour.interface";
+import { ITour, ITourType } from "./tour.interface";
 
 export interface IPlace {
   image: string;
@@ -16,7 +16,7 @@ export interface ISocialLinks {
 }
 
 export interface IBanner {
-  image: string;
+  image_url: string;
   title: string;
   description?: string;
 }
@@ -26,14 +26,28 @@ export interface IFaqItem {
   answer: string;
 }
 
+export interface ICountry {
+  title: string;
+  image_url: string;
+}
+
+export interface IHero {
+  company_info: {
+
+  },
+  tours: []
+}
+
 export interface IHomeData {
   places: IPlace[];
+  hero: IHero;
   mainTitle: string;
   socialLinks: ISocialLinks;
-  tours: IItem[];
+  tours: ITour[];
+  placesOfInterest: ITour[];
   banner: IBanner;
   tourTypes: ITourType[];
-  countries: string[];
+  countries: ICountry[];
   faq: IFaqItem[];
   images: string[];
 }

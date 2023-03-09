@@ -1,4 +1,4 @@
-import { IItem } from "@/interfaces/common.interface";
+import { ITour } from "@/interfaces/tour.interface";
 import Link from "next/link";
 import { memo } from "react";
 import { useTranslation } from "next-i18next";
@@ -7,7 +7,7 @@ import classes from "./ImageCardExpanded.module.scss";
 import classNames from "classnames";
 
 interface ImageCardExpandedProps {
-  item: IItem;
+  item: ITour;
 }
 
 function ImageCardExpanded({ item }: ImageCardExpandedProps) {
@@ -15,7 +15,12 @@ function ImageCardExpanded({ item }: ImageCardExpandedProps) {
 
   const image = (
     <figure className={classNames(classes.image, "overlay")}>
-      <img width="100%" height="100%" alt={item.title} src={item.image} />
+      <img 
+        width="100%" 
+        height="100%" 
+        alt={item.title} 
+        src={item.cover_image_url}
+      />
     </figure>
   );
 
@@ -26,7 +31,7 @@ function ImageCardExpanded({ item }: ImageCardExpandedProps) {
         classes.link
       )}
       title={t("viewMore")!}
-      href={item.link || `/tours/${item.id}`}
+      href={`/tours/${item.id}`}
     >
       {t("viewMore")}
       <CustomIcon iconName="arrow-right" />
@@ -37,15 +42,19 @@ function ImageCardExpanded({ item }: ImageCardExpandedProps) {
     <div className={classes.card}>
       <div className={classes.content}>
         {image}
-        <span className={classes.label}>{item.type}</span>
-        {item.description && (
+        {item.tour_category_title && (
+          <span className={classes.label}>
+            {item.tour_category_title}
+          </span>
+        )}
+        {item.short_description && (
           <p
             className={classNames(
               "text text--xl text--dark text--high",
               classes.description
             )}
           >
-            {item.description}
+            {item.short_description}
           </p>
         )}
         {link}

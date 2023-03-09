@@ -10,11 +10,11 @@ import { useRouter } from "next/router";
 
 function Navigation() {
   const { headData } = useGlobalContext();
-  const { links = [], phoneNumber } = headData?.headerData || {};
+  const { menus = [], company_info } = headData?.headerData || {};
   const { t } = useTranslation();
   const router = useRouter();
 
-  const navigationItemEls = links.map((item, index) => {
+  const navigationItemEls = menus.map((item, index) => {
     return (
       <li key={index} className={classes.item} aria-label={item.title}>
         <Link href={item.link} title={item.title}>
@@ -37,12 +37,12 @@ function Navigation() {
           </Link>
           <ul className={classes.list}>{navigationItemEls}</ul>
           <a
-            href={`tel:${phoneNumber}`}
+            href={`tel:${company_info?.contact_phone_number}`}
             title={t("phoneDescription")!}
             className={classNames(classes.btn, "btn btn--pill")}
           >
             <Call />
-            {phoneNumber}
+            {company_info?.contact_phone_number}
           </a>
         </nav>
       </div>

@@ -16,32 +16,61 @@ import classNames from "classnames";
 import { IFooterData } from "@/interfaces/common.interface";
 import { TbBrandTelegram } from "react-icons/tb";
 import SafeHydrate from "../Common/SafeHydrate";
+import { fetchData } from "@/utils/client-fetch.utils";
 
-const socialMediaIconsMap: Record<
-  keyof IFooterData["socialLinks"],
-  React.ReactNode
-> = {
-  facebook: <Facebook />,
-  instagram: <Instagram />,
-  youtube: <Youtube />,
-  whatsapp: <Whatsapp />,
-  telegram: <TbBrandTelegram />,
+const socialMediaItems = [
+  'facebook_link',
+  'instagram_link',
+  'youtube_link',
+  'whatsapp_link',
+  'description',
+  'telegram_link',
+];
+
+const socialMediaIconsMap = {
+  facebook_link: <Facebook />,
+  instagram_link: <Instagram />,
+  youtube_link: <Youtube />,
+  whatsapp_link: <Whatsapp />,
+  telegram_link: <TbBrandTelegram />,
+};
+
+const defaultForm = {
+  name: "",
+  email: "",
+  message: "",
 };
 
 function Footer() {
   const { headData } = useGlobalContext();
   const { media } = useGlobalContext();
   const { footerData } = headData || {};
-  const { t } = useTranslation();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const { t, i18n, } = useTranslation();
+  const [form, setForm] = useState(defaultForm);
+  const [success, setSuccess] = useState(false);
 
-  const onSubmitForm = useCallback((e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  }, []);
+  const onSubmitForm = useCallback(async (e: FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      const response = await fetchData('/applications/', i18n.language, {
+        method: 'POST',
+        body: JSON.stringify({
+          title: form.name,
+          text: form.message,
+          email: form.email,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      if (response) {
+        setForm(defaultForm);
+        setSuccess(true);
+      }
+    } catch (er) {
+      console.log(er);
+    }
+  }, [form]);
 
   const onFormValueChange = useCallback(
     (name: keyof typeof form, value: any) => {
@@ -55,7 +84,7 @@ function Footer() {
 
   if (!footerData) return null;
 
-  const linkEls = footerData.links.map((link, index) => {
+  const linkEls = footerData.menus.map((link, index) => {
     return (
       <a
         key={link.id ?? index}
@@ -68,10 +97,13 @@ function Footer() {
     );
   });
 
-  const socialMediaLinkEls = Object.keys(footerData.socialLinks).map(
+  const socialMediaLinkEls = Object.keys(footerData.company_info).map(
     (key, index) => {
-      const link = footerData.socialLinks[key as keyof IFooterData['socialLinks']];
-      const icon = socialMediaIconsMap[key as keyof IFooterData['socialLinks']];
+      if (!socialMediaItems.includes(key)) {
+        return null;
+      }
+      const link = footerData.company_info[key as keyof IFooterData['company_info']];
+      const icon = socialMediaIconsMap[key as keyof typeof socialMediaIconsMap];
       return icon && (
         <a
           href={link}
@@ -97,12 +129,11 @@ function Footer() {
                 "text text--pale-dark text--high"
               )}
             >
-              We will help you to discover for yourself the historical and
-              noteworthy places of ancient and modern Uzbekistan.
+              {footerData.company_info.description}
             </p>
             <div className={classes.list}>
               <a
-                href={`tel:${footerData?.companyInfo.phoneNumber}`}
+                href={`tel:${footerData?.company_info.phone_number}`}
                 title={t("phoneNumber")!}
                 className={classes.linkItem}
               >
@@ -111,11 +142,11 @@ function Footer() {
                 </span>
                 <span className={classes.labelGroup}>
                   <span className={classes.label}>{t("telShort")}</span>
-                  {footerData?.companyInfo.phoneNumber}
+                  {footerData?.company_info.phone_number}
                 </span>
               </a>
               <a
-                href={`mailto:${footerData?.companyInfo.email}`}
+                href={`mailto:${footerData?.company_info.email}`}
                 title={t("email")!}
                 className={classes.linkItem}
               >
@@ -124,7 +155,7 @@ function Footer() {
                 </span>
                 <span className={classes.labelGroup}>
                   <span className={classes.label}>{t("email")}</span>
-                  {footerData?.companyInfo.email}
+                  {footerData?.company_info.email}
                 </span>
               </a>
               <div className={classes.linkItem}>
@@ -133,7 +164,7 @@ function Footer() {
                 </span>
                 <span className={classes.labelGroup}>
                   <span className={classes.label}>{t("address")}</span>
-                  {footerData?.companyInfo.address}
+                  {footerData?.company_info.address}
                 </span>
               </div>
             </div>
@@ -153,9 +184,15 @@ function Footer() {
               <p className="text text--pale-dark text--high">{t("respond")}</p>
             </div>
             <form onSubmit={onSubmitForm} className={classes.form}>
+              {success && (
+                <span className="text text--success">
+                  Your request has successfully been sent, we will get back to you very soon!
+                </span>
+              )}
               <input
                 className="input"
                 value={form.name}
+                required
                 placeholder={t("name")!}
                 onChange={(e) => onFormValueChange("name", e.target.value)}
               />
@@ -163,12 +200,15 @@ function Footer() {
                 className="input"
                 value={form.email}
                 placeholder={t("email")!}
+                type="email"
+                required
                 onChange={(e) => onFormValueChange("email", e.target.value)}
               />
               <textarea
                 className="input"
                 value={form.message}
                 placeholder={t("message")!}
+                required
                 onChange={(e) => onFormValueChange("message", e.target.value)}
               />
               <button className="btn btn--green btn--fullWidth btn--regular btn--reverse">

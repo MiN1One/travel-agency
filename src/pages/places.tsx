@@ -1,14 +1,15 @@
 import Layout from "@/components/Common/Layout";
-import { IItem, IPageWithLayout } from "@/interfaces/common.interface";
+import { IPageWithLayout } from "@/interfaces/common.interface";
 import { DEFAULT_LOCALE } from "@/interfaces/locales.interface";
 import { fetchMainData } from "@/utils/fetch.utils";
 import { GetStaticProps } from "next";
-import { tours } from "@/config/tours.config";
 import ToursContainer from "@/components/ToursContainer/ToursContainer";
 import { useTranslation } from "react-i18next";
+import { ITour } from "@/interfaces/tour.interface";
+import { fetchData } from "@/utils/client-fetch.utils";
 
 interface PlacesOfInterestPageProps extends IPageWithLayout {
-  tours: IItem[];
+  tours: ITour[];
 }
 
 function PlacesOfInterestPage(props: PlacesOfInterestPageProps) {
@@ -27,13 +28,14 @@ function PlacesOfInterestPage(props: PlacesOfInterestPageProps) {
 export const getStaticProps: GetStaticProps<PlacesOfInterestPageProps> = 
   async (ctx) => {
     const locale = ctx.locale || ctx.defaultLocale || DEFAULT_LOCALE;
-    const [headData] = await Promise.all([
+    const [headData, tours] = await Promise.all([
       fetchMainData(locale),
+      fetchData('/index-places-of-interest', locale)
     ]);
     return {
       props: {
         ...headData,
-        tours
+        tours,
       },
     };
   };

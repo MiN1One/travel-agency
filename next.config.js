@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   i18n: require('./next-i18next.config').i18n,
   env: {
-    API_URL: ''
+    API_URL: 'https://api.uzbtrip.com/api/v1'
   },
   webpack: (config) => {
     config.module.rules.push({

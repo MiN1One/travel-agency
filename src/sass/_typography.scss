@@ -49,6 +49,10 @@
     line-height: 2.4rem;
   }
 
+  &--success {
+    color: var(--color-primary);
+  }
+
   &--sub {
     color: var(--color-font-pale);
   }

@@ -7,11 +7,15 @@ interface ImageBannerProps {
 }
 
 function ImageBanner(props: ImageBannerProps) {
-  const { title, description, image } = props.banner;
+
+  if (!props.banner) return null;
+
+  const { title, description, image_url } = props.banner;
+
   return (
     <section 
       className={classes.banner} 
-      style={{ backgroundImage: `url(${image})` }}
+      style={{ backgroundImage: `url(${image_url})` }}
     >
       <div className="container">
         <div className={classes.content}>

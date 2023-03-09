@@ -13,14 +13,14 @@ import { useRouter } from "next/router";
 
 function MobileNavigation() {
   const { headData } = useGlobalContext();
-  const { links, phoneNumber } = headData?.headerData || {};
+  const { menus, company_info } = headData?.headerData || {};
   const { t } = useTranslation();
   const [showDrawer, setShowDrawer] = useState(false);
   const router = useRouter();
 
   useHideScrollbar(showDrawer);
 
-  const linkEls = links?.map((link, index) => {
+  const linkEls = menus?.map((link, index) => {
     return (
       <li 
         className={classes.item} 
@@ -51,12 +51,12 @@ function MobileNavigation() {
             {linkEls}
           </ul>
           <a 
-            href={`tel:${phoneNumber}`} 
+            href={`tel:${company_info?.contact_phone_number}`} 
             title={t('phoneNumber')!} 
             className={classes.phone}
           >
             <CallCalling />
-            {phoneNumber}
+            {company_info?.contact_phone_number}
           </a>
         </div>
         <button 
