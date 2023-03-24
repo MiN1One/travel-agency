@@ -21,6 +21,7 @@ function ToursSlider({ tours }: ToursSliderProps) {
     <Swiper
       spaceBetween={12}
       slidesPerView={1.1}
+      centeredSlides={true}
       loop={true}
       modules={[FreeMode]}
       breakpoints={{
