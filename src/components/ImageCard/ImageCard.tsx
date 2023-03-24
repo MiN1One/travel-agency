@@ -40,7 +40,7 @@ function ImageCard({ item }: ImageCardProps) {
           </p>
         )}
         <Link
-          title={t("viewMore")!}
+          title={item.title}
           className={classNames(
             classes.link,
             "btn btn--pill btn--sm btn--opaque"

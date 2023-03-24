@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper";
 
 interface PhotoGalleryProps {
-  images: string[];
+  images: { image_url: string; }[];
 }
 
 function PhotoGallery({ images }: PhotoGalleryProps) {
@@ -31,7 +31,7 @@ function PhotoGallery({ images }: PhotoGalleryProps) {
         <img 
           width="100%"
           height="100%"
-          src={image}
+          src={image.image_url}
           alt={t('galleryImage')!}
         />
       </SwiperSlide>
@@ -76,7 +76,7 @@ function PhotoGallery({ images }: PhotoGalleryProps) {
         </Swiper>
       </div>
       <div className={classes.gallery}>
-        <DSlider images={slides} />
+        <DSlider images={slides.map(({ image_url }) => image_url)} />
       </div>
     </SectionSkeleton>
   );

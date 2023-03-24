@@ -3,7 +3,7 @@ import { SSRConfig } from "next-i18next";
 export interface ILinkItem {
   title: string;
   id?: number;
-  link: string;
+  url: string;
 }
 
 export interface IFooterData {
@@ -17,6 +17,7 @@ export interface IFooterData {
     whatsapp_link: string;
     description: string;
     telegram_link: string;
+    logo_url: string;
   };
   menus: ILinkItem[];
 }
@@ -35,6 +36,7 @@ export interface IItem {
 export interface IHeaderData {
   menus: ILinkItem[];
   company_info: {
+    logo_url: string;
     contact_phone_number: string;
   };
 }

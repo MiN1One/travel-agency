@@ -5,11 +5,11 @@ import { fetchMainData } from "@/utils/fetch.utils";
 import { GetStaticProps } from "next";
 import ToursContainer from "@/components/ToursContainer/ToursContainer";
 import { useTranslation } from "react-i18next";
-import { ITour } from "@/interfaces/tour.interface";
+import { IPaginatedTours } from "@/interfaces/tour.interface";
 import { fetchData } from "@/utils/client-fetch.utils";
 
 interface PlacesOfInterestPageProps extends IPageWithLayout {
-  tours: ITour[];
+  tours: IPaginatedTours;
 }
 
 function PlacesOfInterestPage(props: PlacesOfInterestPageProps) {
@@ -17,7 +17,7 @@ function PlacesOfInterestPage(props: PlacesOfInterestPageProps) {
   return (
     <Layout>
       <ToursContainer 
-        title={t('placesOfInterest')!}
+        title={t('placeOfInterest')!}
         showTypes={false}
         tours={props.tours}
       />
@@ -30,8 +30,9 @@ export const getStaticProps: GetStaticProps<PlacesOfInterestPageProps> =
     const locale = ctx.locale || ctx.defaultLocale || DEFAULT_LOCALE;
     const [headData, tours] = await Promise.all([
       fetchMainData(locale),
-      fetchData('/index-places-of-interest', locale)
+      fetchData('/tours?is_high_interest=true', locale)
     ]);
+    console.log(tours)
     return {
       props: {
         ...headData,

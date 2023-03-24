@@ -21,6 +21,7 @@ function SectionSkeleton(props: SectionSkeletonProps) {
     headContent,
     withContainer = true,
     headClassName,
+    ...restProps
   } = props;
 
   let content = (
@@ -39,7 +40,10 @@ function SectionSkeleton(props: SectionSkeletonProps) {
   }
 
   return (
-    <section className={classNames(classes.section, className)}>
+    <section 
+      {...restProps} 
+      className={classNames(classes.section, className)}
+    >
       <div className="container">
         {(title || headContent) && (
           <div className={classNames(classes.head, headClassName)}>

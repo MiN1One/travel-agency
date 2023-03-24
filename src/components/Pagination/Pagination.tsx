@@ -16,15 +16,12 @@ function Pagination(props: PaginationProps) {
 
   const pagesArr = Array.from(Array(pagesCount).keys());
 
-  const pageEls = [
-    ...pagesArr.slice(activePage - 1, PAGES_VISIBLE + activePage - 1),
-    pagesCount > PAGES_VISIBLE * 2 ? "..." : undefined,
-    ...pagesArr.slice(pagesCount - PAGES_VISIBLE),
-  ].map((page, index) => {
+  const pageEls = pagesArr.map((page, index) => {
     return (
       <div
         tabIndex={0}
         role="button"
+        aria-label={`Page ${index + 1}`}
         key={index}
         onClick={
           typeof page === "number" ? () => onPageChange(page + 1) : undefined

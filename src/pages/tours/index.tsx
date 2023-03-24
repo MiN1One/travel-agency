@@ -4,11 +4,11 @@ import { IPageWithLayout } from "@/interfaces/common.interface";
 import { DEFAULT_LOCALE } from "@/interfaces/locales.interface";
 import { fetchMainData } from "@/utils/fetch.utils";
 import { GetStaticProps } from "next";
-import { ITour, ITourType } from "@/interfaces/tour.interface";
+import { IPaginatedTours, ITourType } from "@/interfaces/tour.interface";
 import { fetchData } from "@/utils/client-fetch.utils";
 
 interface ToursPageProps extends IPageWithLayout {
-  tours: ITour[];
+  tours: IPaginatedTours;
   tourTypes: ITourType[];
 }
 
@@ -29,16 +29,14 @@ export const getStaticProps: GetStaticProps<ToursPageProps> = async (ctx) => {
   const locale = ctx.locale || ctx.defaultLocale || DEFAULT_LOCALE;
   const [headData, tours, tourTypes] = await Promise.all([
     fetchMainData(locale),
-    fetchData('/tours', locale),
+    fetchData('/tours?is_high_interest=false', locale),
     fetchData('/tour-categories', locale),
   ]);
-
-  console.log({ tourTypes })
 
   return {
     props: {
       ...headData,
-      tours: tours.results || [],
+      tours,
       tourTypes,
     },
   };

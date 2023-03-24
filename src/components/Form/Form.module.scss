@@ -7,6 +7,17 @@
     margin-bottom: 3rem;
   }
 
+  .error {
+    color: rgb(234, 105, 105);
+  }
+
+  .status,
+  .error {
+    margin-bottom: 2rem;
+    padding: 0 4rem;
+    max-width: 40rem;
+  }
+
   .form {
     background-color: #fff;
     padding: 3.5rem;

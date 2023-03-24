@@ -1,12 +1,9 @@
-import { IItem } from "./common.interface";
 import { ITour, ITourType } from "./tour.interface";
 
 export interface IPlace {
-  image: string;
+  banner_image_url: string;
   title: string;
-  link: string;
   id: number;
-  previewLink?: string;
 }
 
 export interface ISocialLinks {
@@ -33,9 +30,12 @@ export interface ICountry {
 
 export interface IHero {
   company_info: {
-
+    video_url: string;
+    instagram_link: string;
+    telegram_link: string;
+    youtube_link: string;
   },
-  tours: []
+  tours: IPlace[]
 }
 
 export interface IHomeData {
@@ -49,5 +49,7 @@ export interface IHomeData {
   tourTypes: ITourType[];
   countries: ICountry[];
   faq: IFaqItem[];
-  images: string[];
+  images: {
+    image_url: string;
+  }[];
 }

@@ -1,6 +1,6 @@
 import { DEFAULT_LOCALE } from "@/interfaces/locales.interface";
 
-export const fetchData = async (
+export const fetchData = async <T = any>(
   path: string, 
   locale: string = DEFAULT_LOCALE, 
   options?: RequestInit
@@ -17,11 +17,11 @@ export const fetchData = async (
       }
     );
     if (response.ok) {
-      return response.json();
+      return response.json() as T;
     }
-    return null;
+    return null as T;
   } catch (er) {
     console.log('Error fetching data', er);
-    return null;
+    return null as T;
   }
 };

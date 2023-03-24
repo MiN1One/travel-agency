@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import classes from './DSlider.module.scss';
 import { useTranslation } from "next-i18next";
 import classNames from "classnames";
@@ -21,9 +21,31 @@ function DSlider({ images }: DSliderProps) {
 
   const setupGallery = useCallback(() => {
     if (!sliderWrapperRef.current) return;
-    const sliderWrapperEl = sliderWrapperRef.current
+    const sliderWrapperEl = sliderWrapperRef.current;
+    const slides = images.length % 2 === 0 
+      ? [images.slice(-1).pop(), ...images] 
+      : images;
+    const slideElsTemplates = slides.map((image, index) => {
+      return `
+        <figure 
+          class="${classNames(
+            classes.image, 
+            { [classes.center]: index === middleSlideIndex }
+          )}"
+        > 
+          <img
+            src=${image}
+            alt="${t('galleryImage')}"
+            width="100%"
+            height="100%"
+          >
+        </figure>
+      `
+    });
+    const tempEl = document.createElement('div');
+    tempEl.innerHTML = slideElsTemplates.join('');
     const slidesEls = Array.from(
-      sliderWrapperEl.querySelectorAll(`.${classes.image}`)
+      tempEl.querySelectorAll(`.${classes.image}`)
     ) as HTMLElement[];
     const middleSlide = sliderWrapperEl.querySelector(`.${classes.center}`)!;
     const middleSlideOffset = middleSlide.getBoundingClientRect().left;
@@ -50,14 +72,12 @@ function DSlider({ images }: DSliderProps) {
         slide.style.zIndex = rightSlideCurrIndex.toString();
       }
     });
+    sliderWrapperEl.innerHTML = tempEl.innerHTML;
   }, [middleSlideIndex, images]);
 
-  useEffect(() => {
-    setupGallery();
-  }, [setupGallery]);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     const debounceSetupGallery = debounce(setupGallery, 500);
+    setupGallery();
     window.addEventListener('resize', debounceSetupGallery);
     return () => {
       window.removeEventListener('rezise', debounceSetupGallery)
@@ -65,7 +85,11 @@ function DSlider({ images }: DSliderProps) {
   }, [setupGallery]);
 
   const itemEls = useMemo(() => {
-    return images.map((image, index) => {
+    const slides = images.length % 2 === 0 
+      ? [images.slice(-1).pop(), ...images] 
+      : images;
+
+    return slides.map((image, index) => {
       return (
         <figure 
           className={classNames(
@@ -83,11 +107,11 @@ function DSlider({ images }: DSliderProps) {
         </figure>
       );
     });
-  }, [images]);  
+  }, []);  
 
   return (
-    <div className={classes.slider} ref={sliderWrapperRef}>
-      <div className={classes.content}>
+    <div className={classes.slider}>
+      <div className={classes.content} ref={sliderWrapperRef}>
         {itemEls}
       </div>
     </div>

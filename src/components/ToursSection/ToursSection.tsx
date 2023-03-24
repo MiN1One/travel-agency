@@ -10,6 +10,7 @@ import classNames from "classnames";
 import { useGlobalContext } from "@/contexts/GlobalContext";
 import SafeHydrate from "../Common/SafeHydrate";
 import { fetchData } from "@/utils/client-fetch.utils";
+import { createQueryParams } from "@/utils/url.utils";
 
 interface ToursSectionProps {
   tours: ITour[];
@@ -26,8 +27,10 @@ function ToursSection({ tours, tourTypes }: ToursSectionProps) {
 
   useEffect(() => {
     if (activeTourType) {
-      fetchData(`/index-tours?tour_category_title=${activeTourType}`)
-        .then(r => r.json())
+      const query = createQueryParams({
+        tour_category_title: activeTourType
+      });
+      fetchData(`index-tours${query}`)
         .then(setFilteredTours)
         .catch(er => console.log(er));
     }
@@ -61,6 +64,7 @@ function ToursSection({ tours, tourTypes }: ToursSectionProps) {
 
   return (
     <SectionSkeleton
+      id="service"
       className={classes.tours}
       contentClassName={classes.content}
       headClassName={classes.head}
@@ -74,7 +78,6 @@ function ToursSection({ tours, tourTypes }: ToursSectionProps) {
           breakpoints={{
             551: {
               slidesPerView: 5,
-              spaceBetween: 10,
             }
           }}
         >
@@ -90,8 +93,10 @@ function ToursSection({ tours, tourTypes }: ToursSectionProps) {
             </div>
           )
           : (
-            <Swiper
+            <Swiper  
               className={classes.slider}
+              spaceBetween={30}
+              loop
               breakpoints={{
                 1300: {
                   spaceBetween: 30,

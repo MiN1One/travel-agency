@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 4rem;
+    flex-wrap: wrap;
     margin-top: 2rem;
 
     @include respond('mid') {
@@ -18,6 +19,7 @@
 
   .tags {
     width: 77%;
+    padding-right: 1.5rem;
 
     @include respond('mid') {
       width: 100%;

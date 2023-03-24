@@ -46,7 +46,9 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async (ctx) => {
     tourTypes,
     countries,
     placesOfInterest,
-    aboutUs
+    aboutUs,
+    images,
+    banners,
   ] = await Promise.all([
     fetchMainData(locale),
     fetchData('/common-questions', locale),
@@ -55,6 +57,8 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async (ctx) => {
     fetchData('/countries', locale),
     fetchData('/index-places-of-interest', locale),
     fetchData('/about-us', locale),
+    fetchData('/photogalleries', locale),
+    fetchData('/banners', locale),
   ]);
   return {
     props: {
@@ -65,8 +69,10 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async (ctx) => {
         tours,
         tourTypes,
         countries,
+        images,
         placesOfInterest,
-        banner: aboutUs[0] || {}
+        banner: aboutUs[0] || {},
+        hero: banners
       },
     },
     revalidate: 100,

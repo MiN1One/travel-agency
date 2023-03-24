@@ -14,11 +14,15 @@
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.4);
     border-radius: 0.5rem;
     overflow: hidden;
+    animation-fill-mode: backwards;
+    animation: fade .2s ease;
 
     &.center {
       position: relative;
       z-index: 99;
       transform: scale(1.05);
+      animation: scale .325s ease;
+      animation-fill-mode: backwards;
       box-shadow: 1rem 1rem 3rem rgba(0, 0, 0, 0.3);
     }
 
@@ -32,4 +36,20 @@
     top: 50%;
     transform: translateY(-50%);
   }
+}
+
+@keyframes scale {
+  from {
+    opacity: .6;
+    transform: scale(.9);
+  }
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from { opacity: .3; }
+  to { opacity: 1; }
 }

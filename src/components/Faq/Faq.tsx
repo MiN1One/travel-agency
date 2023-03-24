@@ -12,7 +12,7 @@ interface FaqProps {
 
 function Faq({ items }: FaqProps) {
 
-  const faqItemEls = items.map((item, index) => {
+  const faqItemEls = items?.map((item, index) => {
     return (
       <Collapsible 
         key={index}
@@ -37,7 +37,7 @@ function Faq({ items }: FaqProps) {
 
   return (
     <SafeHydrate>
-      <section className={classes.faq}>
+      <section id="for-tourists" className={classes.faq}>
         <div className="container">
           <div className={classes.content}>
             <ul className={classes.list}>

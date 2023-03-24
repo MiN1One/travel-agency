@@ -1,11 +1,13 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "next-i18next";
 import Form from "../Form/Form";
-import { IItem } from "@/interfaces/common.interface";
 import DateInput from "../DateInput/DateInput";
+import { ITourExpanded } from "@/interfaces/tour.interface";
+import { fetchData } from "@/utils/client-fetch.utils";
+import dayjs from "dayjs";
 
 interface BookTourFormProps {
-  tour: IItem;
+  tour: ITourExpanded;
 }
 
 const defaultBookForm = {
@@ -18,11 +20,35 @@ const defaultBookForm = {
 
 function BookTourForm({ tour }: BookTourFormProps) {
   const [bookForm, setBookForm] = useState(defaultBookForm);
-  const { t } = useTranslation();
+  const [status, setStatus] = useState<null | 'fail' | 'success'>(null); 
+  const { t, i18n } = useTranslation();
 
-  const onSubmitBooking = useCallback(() => {
-
-  }, [bookForm]);
+  const onSubmitBooking = useCallback(async () => {
+    setStatus(null);
+    const result = await fetchData(
+      `tours/${tour.id}/book/`, 
+      i18n.language, 
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          full_name: bookForm.name,
+          phone_number: bookForm.phone,
+          email: bookForm.email,
+          text: bookForm.comment,
+          date: dayjs(bookForm.date).format('YYYY-MM-DD')
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    if (result) {
+      setBookForm(defaultBookForm);
+      setStatus('success');
+    } else {
+      setStatus('fail');
+    }
+  }, [bookForm, i18n.language]);
 
   const onFormChange = useCallback(
     (name: keyof typeof defaultBookForm, value: any) => {
@@ -36,6 +62,7 @@ function BookTourForm({ tour }: BookTourFormProps) {
       label={t('fillFields')!}
       onSubmit={onSubmitBooking}
       submitTitle={t('bookTour')}
+      status={status}
     >
       <input
         value={bookForm.name}

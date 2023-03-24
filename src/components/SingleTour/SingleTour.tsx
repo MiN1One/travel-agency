@@ -1,4 +1,3 @@
-import { IItem } from "@/interfaces/common.interface";
 import { memo, useEffect, useState } from "react";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import classes from "./SingleTour.module.scss";
@@ -10,11 +9,12 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import ToursSlider from "../ToursSlider/ToursSlider";
 import BookTourForm from "../BookTourForm/BookTourForm";
 import QuestionForm from "../QuestionForm/QuestionForm";
+import { ITour, ITourExpanded } from "@/interfaces/tour.interface";
 import SafeHydrate from "../Common/SafeHydrate";
 
 interface SingleTourProps {
-  tour: IItem;
-  recommendedTours?: IItem[];
+  tour: ITourExpanded;
+  recommendedTours?: ITour[];
 }
 
 function SingleTour({ tour, recommendedTours }: SingleTourProps) {
@@ -34,7 +34,7 @@ function SingleTour({ tour, recommendedTours }: SingleTourProps) {
     return (
       <SwiperSlide key={index} className={classes.image}>
         <img
-          src={image}
+          src={image.image_url}
           alt={`${tour.title} ${t("image")}`}
           width="100%"
           height="100%"
@@ -98,7 +98,11 @@ function SingleTour({ tour, recommendedTours }: SingleTourProps) {
           </div>
         </SwiperContainer>
         <div className={classes.priceContainer}>
-          {tour.price && <span className={classes.price}>{tour.price}</span>}
+          {tour.price && (
+            <span className={classes.price}>
+              ${tour.price}
+            </span>
+          )}
           <div className={classes.actions}>
             <button
               className="btn btn--green btn--pill btn--light"
@@ -153,11 +157,13 @@ function SingleTour({ tour, recommendedTours }: SingleTourProps) {
           </div>
         </div>
       </div>
-      {recommendedTours && recommendedTours.length > 0 && (
-        <div className={classes.recommendedTours}>
-          <ToursSlider tours={recommendedTours} />
-        </div>
-      )}
+      <SafeHydrate>
+        {recommendedTours && recommendedTours.length > 0 && (
+          <div className={classes.recommendedTours}>
+            <ToursSlider tours={recommendedTours} />
+          </div>
+        )}
+      </SafeHydrate>
     </main>
   );
 }

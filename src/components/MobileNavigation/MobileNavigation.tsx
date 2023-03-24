@@ -10,6 +10,8 @@ import { VscClose } from "react-icons/vsc";
 import useHideScrollbar from "@/hooks/useHideScrollbar";
 import { CallCalling } from "iconsax-react";
 import { useRouter } from "next/router";
+import { fixNavigationUrl } from "@/utils/url.utils";
+// import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 function MobileNavigation() {
   const { headData } = useGlobalContext();
@@ -19,6 +21,7 @@ function MobileNavigation() {
   const router = useRouter();
 
   useHideScrollbar(showDrawer);
+  // useSmoothScroll();
 
   const linkEls = menus?.map((link, index) => {
     return (
@@ -27,7 +30,10 @@ function MobileNavigation() {
         key={link.id ?? index} 
         aria-label={link.title}
       >
-        <Link title={link.title} href={link.link}>
+        <Link 
+          title={link.title} 
+          href={fixNavigationUrl(router.pathname, link.url)} 
+        >
           {link.title}
         </Link>
       </li>

@@ -1,10 +1,11 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "next-i18next";
 import Form from "../Form/Form";
-import { IItem } from "@/interfaces/common.interface";
+import { ITourExpanded } from "@/interfaces/tour.interface";
+import { fetchData } from "@/utils/client-fetch.utils";
 
 interface QuestionFormProps {
-  tour: IItem;
+  tour: ITourExpanded;
 }
 
 const defaultForm = {
@@ -16,11 +17,34 @@ const defaultForm = {
 
 function QuestionForm({ tour }: QuestionFormProps) {
   const [form, setForm] = useState(defaultForm);
-  const { t } = useTranslation();
+  const [status, setStatus] = useState<null | 'fail' | 'success'>(null); 
+  const { t, i18n } = useTranslation();
 
-  const onSubmitForm = useCallback(() => {
-
-  }, [form]);
+  const onSubmitForm = useCallback(async () => {
+    setStatus(null);
+    const result = await fetchData(
+      `tours/${tour.id}/ask-question/`,
+      i18n.language, 
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          full_name: form.name,
+          phone_number: form.phone,
+          email: form.email,
+          text: form.message,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    if (result) {
+      setForm(defaultForm);
+      setStatus('success');
+    } else {
+      setStatus('fail');
+    }
+  }, [form, i18n.language]);
 
   const onFormChange = useCallback(
     (name: keyof typeof defaultForm, value: any) => {
@@ -34,23 +58,24 @@ function QuestionForm({ tour }: QuestionFormProps) {
       label={t("fillFields")!}
       onSubmit={onSubmitForm}
       submitTitle={t('sendMessage')!}
+      status={status}
     >
       <input
-        value={defaultForm.name}
+        value={form.name}
         onChange={(e) => onFormChange("name", e.target.value)}
         className="input-light"
         placeholder={t("yourName")!}
         required
       />
       <input
-        value={defaultForm.phone}
+        value={form.phone}
         onChange={(e) => onFormChange("phone", e.target.value)}
         className="input-light"
         placeholder={t("phoneNumber")!}
         required
       />
       <input
-        value={defaultForm.email}
+        value={form.email}
         onChange={(e) => onFormChange("email", e.target.value)}
         className="input-light"
         placeholder={t("email")!}
@@ -58,7 +83,7 @@ function QuestionForm({ tour }: QuestionFormProps) {
         type="email"
       />
       <textarea
-        value={defaultForm.message}
+        value={form.message}
         onChange={(e) => onFormChange("message", e.target.value)}
         className="input-light"
         placeholder={t("yourMessage")!}

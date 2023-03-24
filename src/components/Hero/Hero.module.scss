@@ -175,10 +175,15 @@
   }
 
   .separator {
-    width: 10rem;
+    flex-grow: 1;
+    margin: 0 4rem;
     height: 2px;
     background: var(--color-font-pale);
     display: inline-block;
+
+    @include respond('desktop') {
+      margin: 0 1.5rem;
+    }
 
     @include respond('tablet') {
       display: none;

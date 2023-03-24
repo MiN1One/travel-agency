@@ -33,10 +33,21 @@ function TagsSlider(props: TagsSliderProps) {
   return (
     <div className={classes.sliderWrapper}>
       <Swiper 
-        slidesPerView={5}
         {...rest}
         className={classes.slider}
         modules={[Navigation]}
+        slidesPerView={2}
+        breakpoints={{
+          501: {
+            slidesPerView: 3,
+          },
+          769: {
+            slidesPerView: 4,
+          },
+          1025: {
+            slidesPerView: 5
+          }
+        }}
         navigation={{
           prevEl: `.${classes.prev}`,
           nextEl: `.${classes.next}`,

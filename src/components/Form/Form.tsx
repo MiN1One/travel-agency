@@ -10,11 +10,19 @@ interface FormProps {
   label?: string;
   onSubmit: () => void;
   submitTitle: string;
+  status?: 'fail' | 'success' | null;
 }
 
 function Form(props: FormProps) {
   const [captcha, setCaptcha] = useState('');
-  const { title, label, onSubmit, children, submitTitle } = props;
+  const {
+    title,
+    label,
+    onSubmit,
+    children,
+    submitTitle,
+    status,
+  } = props;
   const { t } = useTranslation();
   const [validationCaptcha, setValidationCaptcha] = useState(
     generatedCaptchaImage()
@@ -45,6 +53,21 @@ function Form(props: FormProps) {
         </h2>
       )}
       <form className={classes.form} onSubmit={onSubmitForm}>
+        {status === 'success' 
+          ? (
+            <span className={classNames(
+              "text text--success",
+              classes.status
+            )}>
+              Your request has successfully been sent, we will get back to you very soon!
+            </span>
+          )
+          : status === 'fail' && (
+            <span className={classes.error}>
+              Something went wrong, please try again.
+            </span>
+          )
+        }
         {label && (
           <React.Fragment>
             <span className={classNames(

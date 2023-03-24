@@ -25,6 +25,7 @@ function PlacesOfInterest({ places }: PlacesOfInterestProps) {
     <SectionSkeleton
       className={classes.places}
       title={t('placeOfInterest')!}
+      id="places-of-interest"
       contentClassName={classes.content}
     >
       <div className={classNames(classes.list, 'hideScroll')}>

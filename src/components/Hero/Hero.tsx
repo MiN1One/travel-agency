@@ -15,18 +15,15 @@ interface HeroProps {
 
 function Hero({ homeData }: HeroProps) {
   const { t } = useTranslation();
+  const { hero } = homeData || {};
   const [activePlaceId, setActivePlaceId] = useState<number | null>(
-    homeData.places[0].id
+    hero.tours[0].id
   );
 
-  const activePlaceObj = useMemo(() => {
-    return homeData.places.find(({ id }) => id === activePlaceId);
-  }, [activePlaceId]);
-
-  const tourEls = homeData.places.map((place, index) => {
+  const tourEls = hero.tours.map((place, index) => {
     const isActive = activePlaceId === place.id;
     let activeNumber: any = index + 1,
-      allPlacesCount: any = homeData.places.length;
+      allPlacesCount: any = hero.tours.length;
     if (activeNumber < 10) {
       activeNumber = "0" + activeNumber;
     }
@@ -42,7 +39,9 @@ function Hero({ homeData }: HeroProps) {
         >
           <span
             className={classes.title}
-            onClick={() => place.image && setActivePlaceId(place.id!)}
+            onClick={() => 
+              place.banner_image_url && setActivePlaceId(place.id!)
+            }
           >
             {place.title}
           </span>
@@ -54,7 +53,7 @@ function Hero({ homeData }: HeroProps) {
               </div>
               <Link
                 className="link link--arrow"
-                href="/places/all"
+                href={`/tours/${activePlaceId}`}
                 title={t("viewMore")!}
               >
                 {t("viewMore")}
@@ -63,15 +62,15 @@ function Hero({ homeData }: HeroProps) {
             </div>
           )}
         </div>
-        {index < homeData.places.length - 1 && (
+        {index < hero.tours.length - 1 && (
           <span className={classes.separator} />
         )}
       </React.Fragment>
     );
   });
 
-  const bgImages = homeData.places.map((place, index) => {
-    if (!place.image) {
+  const bgImages = hero.tours.map((place, index) => {
+    if (!place.banner_image_url) {
       return null;
     }
     return (
@@ -82,7 +81,7 @@ function Hero({ homeData }: HeroProps) {
         })}
       >
         <img
-          src={place.image}
+          src={place.banner_image_url}
           alt={place.title || t("placeImage")!}
           width="100%"
           height="100%"
@@ -97,17 +96,19 @@ function Hero({ homeData }: HeroProps) {
       <h1 className="heading heading--xlg">
         {homeData.mainTitle}
       </h1>
-      {activePlaceObj?.previewLink && (
-        <Link
+      {hero.company_info.video_url && (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
           className={classes.btnPlay}
-          title={activePlaceObj.title}
-          href={activePlaceObj.previewLink}
+          title={t('showRell')!}
+          href={hero.company_info.video_url}
         >
           {t("watchShowrell")}
           <span>
             <IconPlay />
           </span>
-        </Link>
+        </a>
       )}
       <div className={classes.list}>{tourEls}</div>
       <div className={classes.socialLinks}>
@@ -115,21 +116,21 @@ function Hero({ homeData }: HeroProps) {
           <div className={classes.linksContent}>
             <a
               className="link--rounded"
-              href={homeData.socialLinks.instagram}
+              href={hero.company_info.instagram_link}
               title="Instagram"
             >
               <Instagram />
             </a>
             <a
               className="link--rounded"
-              href={homeData.socialLinks.telegram}
+              href={hero.company_info.telegram_link}
               title="Telegram"
             >
               <TbBrandTelegram />
             </a>
             <a
               className="link--rounded"
-              href={homeData.socialLinks.youtTube}
+              href={hero.company_info.youtube_link}
               title="Youtube"
             >
               <Youtube />

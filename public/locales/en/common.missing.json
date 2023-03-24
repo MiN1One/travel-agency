@@ -25,5 +25,14 @@
   "telegram_link": "telegram_link",
   "whatsapp_link": "whatsapp_link",
   "instagram_link": "instagram_link",
-  "home": "home"
+  "home": "home",
+  "showRell": "showRell",
+  "bookTour": "bookTour",
+  "askQuestion": "askQuestion",
+  "image": "image",
+  "imageNavigation": "imageNavigation",
+  "contactUs": "contactUs",
+  "respond": "respond",
+  "socialMedia": "socialMedia",
+  "beTheFirst": "beTheFirst"
 }

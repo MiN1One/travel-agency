@@ -14,6 +14,7 @@ function ImageBanner(props: ImageBannerProps) {
 
   return (
     <section 
+      id="about-us"
       className={classes.banner} 
       style={{ backgroundImage: `url(${image_url})` }}
     >

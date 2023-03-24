@@ -1,4 +1,5 @@
 import { useGlobalContext } from "@/contexts/GlobalContext";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import dynamic from "next/dynamic";
 import React from "react";
 import Footer from "../Footer/Footer";
@@ -17,6 +18,7 @@ const AsyncMobileNavigation = dynamic(() =>
 
 function Layout({ children }: LayoutProps) {
   const { media, headData } = useGlobalContext();
+
   return (
     <React.Fragment>
       <SafeHydrate releaseContent>

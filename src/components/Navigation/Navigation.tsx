@@ -7,6 +7,8 @@ import classes from "./Navigation.module.scss";
 import { Call } from "iconsax-react";
 import classNames from "classnames";
 import { useRouter } from "next/router";
+import { fixNavigationUrl } from "@/utils/url.utils";
+// import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 function Navigation() {
   const { headData } = useGlobalContext();
@@ -14,10 +16,19 @@ function Navigation() {
   const { t } = useTranslation();
   const router = useRouter();
 
+  // useSmoothScroll();
+
   const navigationItemEls = menus.map((item, index) => {
     return (
-      <li key={index} className={classes.item} aria-label={item.title}>
-        <Link href={item.link} title={item.title}>
+      <li 
+        key={index} 
+        className={classes.item} 
+        aria-label={item.title}
+      >
+        <Link 
+          href={fixNavigationUrl(router.pathname, item.url)} 
+          title={item.title}
+        >
           {item.title}
         </Link>
       </li>
@@ -33,7 +44,7 @@ function Navigation() {
       <div className="container">
         <nav role="navigation" className={classes.content}>
           <Link href="/" title={t('home')!}>
-            <Logo />
+            <Logo src={company_info?.logo_url} />
           </Link>
           <ul className={classes.list}>{navigationItemEls}</ul>
           <a

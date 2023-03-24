@@ -1,19 +1,18 @@
 import Layout from '@/components/Common/Layout';
-import { IItem, IPageWithLayout } from '@interfaces/common.interface';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { IPageWithLayout } from '@interfaces/common.interface';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
 import { DEFAULT_LOCALE } from '@/interfaces/locales.interface';
 import { fetchMainData } from '@/utils/fetch.utils';
-import { tour } from '@/config/tour.config';
 import SingleTour from '@/components/SingleTour/SingleTour';
-import { tours } from '@/config/tours.config';
+import { ITour, ITourExpanded } from '@/interfaces/tour.interface';
+import { fetchData } from '@/utils/client-fetch.utils';
 
 interface SingleTourPageProps extends IPageWithLayout {
-  tour: IItem;
-  recommendedTours?: IItem[];
+  tour: ITourExpanded;
+  recommendedTours?: ITour[];
 }
 
 function SingleTourPage(props: SingleTourPageProps) {
-
   return (
     <Layout>
       <SingleTour 
@@ -24,28 +23,20 @@ function SingleTourPage(props: SingleTourPageProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const promises = ctx.locales?.map(locale => {
-  });
-
-  return {
-    paths: [
-      { params: { id: '0' } }
-    ],
-    fallback: false
-  };
-};
-
-export const getStaticProps: GetStaticProps<SingleTourPageProps> = async (ctx) => { 
+export const getServerSideProps: GetServerSideProps<
+  SingleTourPageProps
+> = async (ctx) => { 
   const locale = ctx.locale || ctx.defaultLocale || DEFAULT_LOCALE;
-  const [headData] = await Promise.all([
+  const [headData, tour] = await Promise.all([
     fetchMainData(locale),
+    fetchData(`tours/${ctx.params?.id}`, locale)
   ]);
+  console.log(tour?.tour?.images)
   return {
     props: {
       ...headData,
-      tour,
-      recommendedTours: tours
+      tour: tour?.tour || null,
+      recommendedTours: tour?.related || null
     }
   };
 }

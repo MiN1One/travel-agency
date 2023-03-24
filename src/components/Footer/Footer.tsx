@@ -88,7 +88,7 @@ function Footer() {
     return (
       <a
         key={link.id ?? index}
-        href={link.link}
+        href={link.url}
         className="link text--pale-dark"
         title={link.title}
       >
@@ -122,7 +122,10 @@ function Footer() {
       <div className="container">
         <div className={classes.content}>
           <div className={classes.group}>
-            <Logo className={classes.logo} />
+            <Logo 
+              src={footerData.company_info.logo_url} 
+              className={classes.logo}
+            />
             <p
               className={classNames(
                 classes.text,
