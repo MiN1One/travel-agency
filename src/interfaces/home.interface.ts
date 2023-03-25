@@ -39,10 +39,7 @@ export interface IHero {
 }
 
 export interface IHomeData {
-  places: IPlace[];
   hero: IHero;
-  mainTitle: string;
-  socialLinks: ISocialLinks;
   tours: ITour[];
   placesOfInterest: ITour[];
   banner: IBanner;

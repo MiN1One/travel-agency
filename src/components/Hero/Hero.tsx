@@ -39,7 +39,7 @@ function Hero({ homeData }: HeroProps) {
         >
           <span
             className={classes.title}
-            onClick={() => 
+            onClick={() =>
               place.banner_image_url && setActivePlaceId(place.id!)
             }
           >
@@ -93,15 +93,13 @@ function Hero({ homeData }: HeroProps) {
   return (
     <section className={classes.hero}>
       {bgImages}
-      <h1 className="heading heading--xlg">
-        {homeData.mainTitle}
-      </h1>
+      <h1 className="heading heading--xlg">Uzbekistan</h1>
       {hero.company_info.video_url && (
         <a
           target="_blank"
           rel="noopener noreferrer"
           className={classes.btnPlay}
-          title={t('showRell')!}
+          title={t("showRell")!}
           href={hero.company_info.video_url}
         >
           {t("watchShowrell")}

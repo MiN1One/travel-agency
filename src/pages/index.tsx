@@ -4,7 +4,6 @@ import { IHomeData } from "@/interfaces/home.interface";
 import { DEFAULT_LOCALE } from "@/interfaces/locales.interface";
 import { fetchMainData } from "@/utils/fetch.utils";
 import { GetStaticProps } from "next";
-import { homeData } from '@/config/home.config';
 import ToursSection from "@/components/ToursSection/ToursSection";
 import ImageBanner from "@/components/ImageBanner/ImageBanner";
 import PlacesOfInterest from "@/components/PlacesOfInterest/PlacesOfInterest";
@@ -64,7 +63,6 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async (ctx) => {
     props: {
       ...headData,
       homeData: {
-        ...homeData,
         faq,
         tours,
         tourTypes,

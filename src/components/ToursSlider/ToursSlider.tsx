@@ -14,7 +14,7 @@ function ToursSlider({ tours }: ToursSliderProps) {
       <SwiperSlide key={tour.id ?? index}>
         <ImageCard item={tour} />
       </SwiperSlide>
-    );
+    ); 
   });
 
   return (
