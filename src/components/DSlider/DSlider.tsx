@@ -1,4 +1,4 @@
-import { memo, useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import classes from './DSlider.module.scss';
 import { useTranslation } from "next-i18next";
 import classNames from "classnames";
@@ -75,7 +75,7 @@ function DSlider({ images }: DSliderProps) {
     sliderWrapperEl.innerHTML = tempEl.innerHTML;
   }, [middleSlideIndex, images]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const debounceSetupGallery = debounce(setupGallery, 500);
     setupGallery();
     window.addEventListener('resize', debounceSetupGallery);

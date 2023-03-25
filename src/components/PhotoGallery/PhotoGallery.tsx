@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import SectionSkeleton from "../SectionSkeleton/SectionSkeleton";
 import classes from './PhotoGallery.module.scss';
@@ -24,6 +24,10 @@ function PhotoGallery({ images }: PhotoGalleryProps) {
     }
     setSlides(slidesCopy);
   }, [slides]);
+
+  useEffect(() => {
+    onSlideChange('next');
+  }, []);
 
   const plainImageEls = images.map((image, index) => {
     return (
